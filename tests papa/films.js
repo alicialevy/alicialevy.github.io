@@ -86,7 +86,8 @@ function renderFilm(film) {
     html += '<div class=\"film-director\">' + film[id_film_director] + '</div>'
     html += '<div class=\"film-date\">' + film[id_film_date] + '</div>'
     html += '<div class=\"film-synopsis\">' + film[id_film_synopsys] + '</div>'
-    html += '<div class=\"film-tags\">' + film[id_film_tags] + '</div>'
+    html += '<div class=\"film-tags\"><a href=\"#\"><button class=\"tag\" onclick=\"filter2(\'' + film[id_film_tags] + '\', this)\">' + film[id_film_tags] + '</button></a></div>'
+    //html += '<div class=\"film-tags\">' + film[id_film_tags] + '</div>'
     html += '</div>'
     html += '</div>'
 

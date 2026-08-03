@@ -30,11 +30,20 @@ a:hover{
 }
 
 .tag-bar {
-display: flex;
+overflow: scroll;
 gap: 5px;
 padding: 8px;
-flex-shrink: 0;
-flex-wrap: wrap;
+}
+
+#taglist {
+  list-style-type:none;
+  padding: 0;
+  margin: 0;
+
+}
+
+li {
+  float: left;
 }
 
 .tag-btn {
@@ -48,8 +57,19 @@ cursor: pointer;
 transition: all 0.15s;
 }
 
+.tag {
+   font-size: 8px;
+   color:rgb(62, 37, 109) ;
+   border: 1px dotted #bbb;
+   background: none;
+   cursor: pointer;
+   padding: none;
+}
+
 .tag-btn:hover { border-color: #888; color: #111; } 
 .tag-btn.active { background-color: rgb(144, 94, 238); color: #111; border-color: #111; }
+
+
 
 #taginput {   
 font-family: monospace;
@@ -118,16 +138,7 @@ font-size: 11px;
 .acc-body ul li {border-bottom: 1px dotted #e8e8e8; }
 .acc-body ul li:last-child { border-bottom: none; }
 
-#taglist {
-  list-style-type:none;
-  padding: 0;
-  margin: 0;
 
-}
-
-li {
-  float: left;
-}
 
 
 
