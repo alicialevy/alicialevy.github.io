@@ -1,0 +1,19 @@
+body{
+		font-family: monospace; 
+		color: black;
+		background-color: beige;
+		/*white-space: pre;*/
+        max-width: 800px;
+	} 
+
+a {
+    color:  rgb(109, 61, 197);
+}
+
+a :visited{
+    color:  rgb(62, 37, 109);
+}
+
+a:hover{
+    background-color: #e5d3fc8b;
+}

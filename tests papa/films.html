@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="films.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+body{
+		font-family: monospace; 
+		color: black;
+		background-color: beige;
+		/*white-space: pre;*/
+        max-width: 800px;
+	} 
+
+.japanese{
+  font-family: sans-serif;
+}
+
+a {
+    color:  rgb(109, 61, 197);
+}
+
+a :visited{
+    color:  rgb(62, 37, 109);
+}
+
+a:hover{
+    background-color: #e5d3fc8b;
+}
+
+.tag-bar {
+display: flex;
+gap: 5px;
+padding: 8px;
+flex-shrink: 0;
+flex-wrap: wrap;
+}
+
+.tag-btn {
+font-family: monospace;
+font-size: 11px;
+padding: 2px 8px;
+border: 1px dotted #bbb;
+background: transparent;
+color: #888;
+cursor: pointer;
+transition: all 0.15s;
+}
+
+.tag-btn:hover { border-color: #888; color: #111; } 
+.tag-btn.active { background-color: rgb(144, 94, 238); color: #111; border-color: #111; }
+
+#taginput {   
+font-family: monospace;
+font-size: 11px;
+padding: 2px 8px;
+border: 1px dotted #bbb;
+background: transparent;
+color: #888;
+cursor: pointer;
+transition: all 0.15s;
+}
+
+.log {
+flex: 1;
+overflow-y: auto;
+padding: 0 50px 0 12px;
+}
+
+.entry {
+margin-bottom: 10px;
+padding-bottom: 10px;
+border-bottom: 1px, dotted, #e0e0e0;
+}
+
+.film-director { font-weight: bold; }
+.alt-title {font-style: italic;}
+.film-synopsis {font-size: 10px; text-align: justify;}
+.film-tags {font-size: 8px; color:rgb(62, 37, 109) }
+.film-img { float:left; position:absolute; width:100px; padding-right: 10px; padding-bottom: 20px;}
+.entry-right { padding-left:110px;}
+.film-name { font-size: medium;}
+
+.entry:last-child { border-bottom: none; }
+.entry.hidden { display: none; }
+
+.entry-body { display: flex; flex-direction: column; gap: 6px; }
+
+.entry-text p { margin-bottom: 8px; }
+.entry-text img {display: block;margin-bottom: 8px; }
+
+
+.acc-trigger {
+display: flex;
+justify-content: space-between;
+align-items: baseline;
+cursor: pointer;
+color: blue;
+user-select: none;
+gap: 10px;
+font-size: 11px;
+}
+
+.acc-item { border-bottom: 1px dotted #d3d3d3; }
+.acc-item:last-child { border-bottom: none; }
+
+
+.acc-trigger:hover .acc-label { text-decoration: underline; }
+.acc-meta { color: #aaa; font-size: 11px; flex-shrink: 0; }
+
+.acc-body { display: none; padding: 5px 50px 0 0;}
+.acc-item.open .acc-body { display: block; }
+.acc-body p { margin-bottom: 8px; }
+.acc-body p:last-child { margin-bottom: 0; }
+.acc-body b { display: block; margin-bottom: 4px; }
+.acc-body ul { list-style: none; padding: 0; }
+.acc-body ul li {border-bottom: 1px dotted #e8e8e8; }
+.acc-body ul li:last-child { border-bottom: none; }
+
+#taglist {
+  list-style-type:none;
+  padding: 0;
+  margin: 0;
+
+}
+
+li {
+  float: left;
+}
+
+
+
+    </style>
+  </head>
+
+  <body>
+
+<div class="tag-bar" id="tag-bar">
+<input type="text" id="taginput" onkeyup="searchtag()" placeholder="Search for a tag..">
+<ul id="taglist">
+<li><a href="#"><button class="tag-btn active" onclick="filter2('all', this)">all</button></a></li>
+<li><a href="#"><button class="tag-btn" onclick="filter2('animated-paint', this)">animated-paint</button></a></li>
+<li><a href="#"><button class="tag-btn" onclick="filter2('cut-out', this)">cut-out</button></a></li>
+<li><a href="#"><button class="tag-btn" onclick="filter2('stop-motion', this)">stop-motion</button></a></li>
+<li><a href="#"><button class="tag-btn" onclick="filter2('documentary', this)">documentary</button></a></li>
+<li><a href="#"><button class="tag-btn" onclick="filter2('on-paper', this)">on-paper</button></a></li>
+<li><a href="#"><button class="tag-btn" onclick="filter2('digital', this)">digital</button></a></li>
+<li><a href="#"><button class="tag-btn" onclick="filter2('celluloïd', this)">celluloïd</button></a></li>
+<li><a href="#"><button class="tag-btn" onclick="filter2('gouache', this)">gouache</button></a></li>
+<li><a href="#"><button class="tag-btn" onclick="filter2('pixillation', this)">pixillation</button></a></li>
+</ul>
+</div>
+
+
+    <p id="display-films"></p>
+
+  <script>
+function searchtag() {
+
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById('taginput');
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("taglist");
+  li = ul.getElementsByTagName('li');
+
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+function acc(trigger) {
+trigger.closest('.acc-item').classList.toggle('open');
+}
+
+function filter2(tag, btn) {
+document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
+btn.classList.add('active');
+document.querySelectorAll('.entry').forEach(entry => {
+const tags = entry.dataset.tags || '';
+entry.classList.toggle('hidden', tag !== 'all' && !tags.split(' ').includes(tag));
+});
+}
+
+
+
+
+</script>
+
+  </body>
+</html>
