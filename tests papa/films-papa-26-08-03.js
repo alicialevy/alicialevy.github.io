@@ -1,45 +1,12 @@
-function searchtag() {
-
-  var input, filter, ul, li, a, i, txtValue;
-  input = document.getElementById('taginput');
-  filter = input.value.toUpperCase();
-  ul = document.getElementById("taglist");
-  li = ul.getElementsByTagName('li');
-
-  for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
-    txtValue = a.textContent || a.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
-    }
-  }
-}
-
-function acc(trigger) {
-trigger.closest('.acc-item').classList.toggle('open');
-}
-
-function filter2(tag, btn) {
-document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
-btn.classList.add('active');
-document.querySelectorAll('.entry').forEach(entry => {
-const tags = entry.dataset.tags || '';
-entry.classList.toggle('hidden', tag !== 'all' && !tags.split(' ').includes(tag));
-});
-}
-
-
-
 Papa.parse(
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vQi8u88PufDDJhfdJen0WKP9kEvQ2y5TAdwXRpq5TFQ2bOKSZLzWiCRHLNceCwaPumtI59MbWojpErz/pub?output=csv",
-   {
-      download: true,
-      complete: function(result) {
-        renderButtons(result.data);
-         renderData(result.data);
-      }
+//    "films.csv",
+    {
+       download: true,
+       complete: function(result) {
+	   renderButtons(result.data);
+           renderData(result.data);
+       }
    }
 );
 
@@ -87,16 +54,12 @@ function renderButtons(films) {
 
     // A remplacer par le code qui va vraiment afficher les vrais boutons
     for (let i=0; i < all_tags.length; i++) {
-	//html += (all_tags[i]) ;
-    html += '<li><a href=\"#\"><button class=\"tag-btn\" onclick=\"filter2(\"' + (all_tags[i]) + '\" , this)\">' + (all_tags[i]) + '</button></a></li>'
+	html += '<li><a href=\"#\"><button class=\"tag-btn\" onclick=\"filter2(\''+ (all_tags[i] + ","); + '\",this)\">' + (all_tags[i] + ","); + '</button></a></li>' ;
     }
 
     card.innerHTML = html;
     display.appendChild(card);
-    
 }
-
-
 
 // Fonction qui prend en argument un "film" (à savoir un tableau de chaines
 // de caractères) et qui renvoit une chaine de caractère avec le code HTML
@@ -113,20 +76,58 @@ function renderFilm(film) {
     let id_film_tags = 7;
 
     let html = '';
-    html += '<div class=\"entry\" data-tags=\"' + film[id_film_tags] + '\">';
-    html += '<div class=\"film-img\"><img src=\"' + film[id_film_img] + '\" width=\"100px\"></div>';
-    html += '<div class=\"entry-right\">'
-    html += '<div class=\"film-name\"><a href=\"' + film[id_link] + '\" target=\"_blank\">' + film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += ' · <span class=\"alt-title\">' + film[id_alt_title] + '</span>' } '</div>';
-    html += '<div class=\"film-director\">' + film[id_film_director] + '</div>'
-    html += '<div class=\"film-date\">' + film[id_film_date] + '</div>'
-    html += '<div class=\"film-synopsis\">' + film[id_film_synopsys] + '</div>'
-    html += '<div class=\"film-tags\">' + film[id_film_tags] + '</div>'
-    html += '</div>'
-    html += '</div>'
+    html += '<ul>';
 
+    html += '<li>';
+    // Il faut "protéger" les guillements par un backslash quand ils sont dans
+    // une chaine de caracteres sinon ils sont compris comme la fin de la chaine
+    //                v
+    html += '<img src=\"' + film[id_film_img] + "\" width=\"100px\"> </img>";
+    html += '</li>';
+
+    html += '<li>';
+    html += '<b>name: </b>';
+    html += film[id_film_name];
+    html += '</li>';
+
+    html += '<li>';
+    html += '<b>date: </b>';
+    html += film[id_film_date];
+    html += '</li>';
+
+    // Exemple de test de la présence d'un champ
+    if (film[id_alt_title] != '') {
+	html += '<li>';
+	html += '<b>alt title: </b>';
+	html += film[id_alt_title];
+	html += '</li>';
+    }
+
+    html += '<li>';
+    html += '<b>director: </b>';
+    html += film[id_film_director];
+    html += '</li>';
+
+
+    html += '<li>';
+    html += '<b>synopsys: </b>';
+    html += film[id_film_synopsys];
+    html += '</li>';
+
+    html += '<li>';
+    html += '<b>tags: </b>';
+    html += film[id_film_tags];
+    html += '</li>';
+
+    html += '<li>'
+    html += '<b>watch it: </b>';
+    html += '<a href=\"' + film[id_link] + "\"> [link] </a>";
+    html += '</li>'
+
+    html += '</ul>';
     return html;
-}
 
+}
 
 // Fonction qui affiche tous les films, appelée par PapaParse
 function renderData(data) {
