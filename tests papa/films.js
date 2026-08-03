@@ -1,37 +1,3 @@
-function searchtag() {
-
-  var input, filter, ul, li, a, i, txtValue;
-  input = document.getElementById('taginput');
-  filter = input.value.toUpperCase();
-  ul = document.getElementById("taglist");
-  li = ul.getElementsByTagName('li');
-
-  for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
-    txtValue = a.textContent || a.innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      li[i].style.display = "";
-    } else {
-      li[i].style.display = "none";
-    }
-  }
-}
-
-function acc(trigger) {
-trigger.closest('.acc-item').classList.toggle('open');
-}
-
-function filter2(tag, btn) {
-document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
-btn.classList.add('active');
-document.querySelectorAll('.entry').forEach(entry => {
-const tags = entry.dataset.tags || '';
-entry.classList.toggle('hidden', tag !== 'all' && !tags.split(' ').includes(tag));
-});
-}
-
-
-
 Papa.parse(
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vQi8u88PufDDJhfdJen0WKP9kEvQ2y5TAdwXRpq5TFQ2bOKSZLzWiCRHLNceCwaPumtI59MbWojpErz/pub?output=csv",
    {
@@ -88,7 +54,7 @@ function renderButtons(films) {
     // A remplacer par le code qui va vraiment afficher les vrais boutons
     for (let i=0; i < all_tags.length; i++) {
 	//html += (all_tags[i]) ;
-    html += '<li><a href=\"#\"><button class=\"tag-btn\" onclick=\"filter2(\"' + (all_tags[i]) + '\" , this)\">' + (all_tags[i]) + '</button></a></li>'
+    html += '<li><a href=\"#\"><button class=\"tag-btn\" onclick=\"filter2(\'' + (all_tags[i]) + '\' , this)\">' + (all_tags[i]) + '</button></a></li>'
     }
 
     card.innerHTML = html;

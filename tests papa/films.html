@@ -140,7 +140,7 @@ li {
 <input type="text" id="taginput" onkeyup="searchtag()" placeholder="Search for a tag..">
 <ul id="taglist">
 <li><a href="#"><button class="tag-btn active" onclick="filter2('all', this)">all</button></a></li>
-<div id="display-buttons"></div>
+ <span id="display-buttons"></span>
 </ul>
 </div>  
 
@@ -168,4 +168,42 @@ li {
 
 
   </body>
+
+<script>
+function searchtag() {
+
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById('taginput');
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("taglist");
+  li = ul.getElementsByTagName('li');
+
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+function acc(trigger) {
+trigger.closest('.acc-item').classList.toggle('open');
+}
+
+function filter2(tag, btn) {
+document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
+btn.classList.add('active');
+document.querySelectorAll('.entry').forEach(entry => {
+const tags = entry.dataset.tags || '';
+entry.classList.toggle('hidden', tag !== 'all' && !tags.split(' ').includes(tag));
+});
+}
+
+
+
+</script>
+
 </html>
