@@ -9,7 +9,6 @@ Papa.parse(
    }
 );
 
-
 // Trie un tableau de chaine de caracteres et supprime tous
 // les doublons.
 // Source: https://stackoverflow.com/questions/4833651/javascript-array-sort-and-unique
@@ -62,8 +61,6 @@ function renderButtons(films) {
     
 }
 
-
-
 // Fonction qui prend en argument un "film" (à savoir un tableau de chaines
 // de caractères) et qui renvoit une chaine de caractère avec le code HTML
 // à afficher pour le film.
@@ -91,9 +88,6 @@ function renderFilm(film) {
 	}
 	// Ajouter les tags du film courant à la liste de tous les tags
 	all_tags = all_tags.concat(this_film_tags);
-    
-    
-    
 
     let html = '';
     html += '<div class=\"entry\" data-tags=\"' + film[id_film_tags] + '\">';
@@ -114,12 +108,9 @@ function renderFilm(film) {
     html += '</div>'
     html += '</div>'
 
-
     return html;
 
-    
 }
-
 
 // Fonction qui affiche tous les films, appelée par PapaParse
 function renderData(data) {
