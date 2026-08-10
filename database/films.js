@@ -78,6 +78,11 @@ function renderFilm(film) {
     let id_film_synopsys = 6;
     let id_film_tags = 7;
 
+   // let tags = films[i][id_film_tags];
+    //let this_film_tags = tags.split(";");
+   // for(let j = 0; j < this_film_tags.length; j++) {
+	//    this_film_tags[j] = this_film_tags[j].trim();
+	//}
     
 
     let html = '';
@@ -90,10 +95,14 @@ function renderFilm(film) {
     html += '<div class=\"film-synopsis\">' + film[id_film_synopsys] + '</div>'
     html += '<div class=\"film-tags\"><a href=\"#\"><button class=\"tag\" onclick=\"filter2(\'' + film[id_film_tags] + '\', this)\">' + film[id_film_tags] + '</button></a></div>'
     //html += '<div class=\"film-tags\">' + film[id_film_tags] + '</div>'
+    
+    
     html += '</div>'
     html += '</div>'
 
     return html;
+
+    
 }
 
 
