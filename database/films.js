@@ -78,6 +78,8 @@ function renderFilm(film) {
     let id_film_synopsys = 6;
     let id_film_tags = 7;
 
+    
+
     let html = '';
     html += '<div class=\"entry\" data-tags=\"' + film[id_film_tags] + '\">';
     html += '<div class=\"film-img\"><img src=\"' + film[id_film_img] + '\" width=\"100px\"></div>';
