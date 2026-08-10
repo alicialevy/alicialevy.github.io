@@ -78,11 +78,21 @@ function renderFilm(film) {
     let id_film_synopsys = 6;
     let id_film_tags = 7;
 
-   // let tags = films[i][id_film_tags];
-    //let this_film_tags = tags.split(";");
-   // for(let j = 0; j < this_film_tags.length; j++) {
-	//    this_film_tags[j] = this_film_tags[j].trim();
-	//}
+    let all_tags = [];
+	// Recuperer les tags dans la bonne colonne
+	let tags = film[id_film_tags];
+	// Decouper la chaine et mettre les tags du film courant dans un tableau
+	// "tag1; tag2; tag3" -> [ "tag1", "tag2", "tag3"]
+	let this_film_tags = tags.split(";");
+	// Virer les espaces en debut et en fin de mot:
+	// " tag  " -> "tag"
+	for(let j = 0; j < this_film_tags.length; j++) {
+	    this_film_tags[j] = this_film_tags[j].trim();
+	}
+	// Ajouter les tags du film courant à la liste de tous les tags
+	all_tags = all_tags.concat(this_film_tags);
+    
+    
     
 
     let html = '';
@@ -93,12 +103,17 @@ function renderFilm(film) {
     html += '<div class=\"film-director\">' + film[id_film_director] + '</div>'
     html += '<div class=\"film-date\">' + film[id_film_date] + '</div>'
     html += '<div class=\"film-synopsis\">' + film[id_film_synopsys] + '</div>'
-    html += '<div class=\"film-tags\"><a href=\"#\"><button class=\"tag\" onclick=\"filter2(\'' + film[id_film_tags] + '\', this)\">' + film[id_film_tags] + '</button></a></div>'
+    //html += '<div class=\"film-tags\"><a href=\"#\"><button class=\"tag\" onclick=\"filter2(\'' + film[id_film_tags] + '\', this)\">' + film[id_film_tags] + '</button></a></div>'
     //html += '<div class=\"film-tags\">' + film[id_film_tags] + '</div>'
     
-    
+       for (let i=0; i < all_tags.length; i++) {
+	//html += (all_tags[i]) ;
+    html += '<div class=\"film-tags\"><li><a href=\"#\"><button class=\"tag\" onclick=\"filter2(\'' + (all_tags[i]) + '\' , this)\">' + (all_tags[i]) + '</button></a></li></div>'
+    }
+
     html += '</div>'
     html += '</div>'
+
 
     return html;
 
