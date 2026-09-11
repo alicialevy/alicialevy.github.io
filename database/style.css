@@ -2,8 +2,7 @@ body{
 		font-family: monospace; 
 		color: black;
 		background-color: beige;
-		/*white-space: pre;*/
-        max-width: 800px;
+
 	} 
 
 a {

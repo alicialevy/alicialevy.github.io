@@ -34,8 +34,12 @@ a:hover{
 }
 
 .tag-bar {
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
 gap: 5px;
 padding: 8px;
+width: fit-content;
 }
 
 #taglist {
@@ -146,12 +150,49 @@ font-size: 11px;
 
 
 
+/*FILTER BUTTON*/
+.collapsed {
+display: none;
+}
+
+.collapsed.active {
+display: block;
+}
+
+.collapsed.active::before {
+content: none;
+}
+
+.expand {
+display: flex;
+align-items: center;
+width: fit-content;
+padding: 5px;
+cursor: pointer;
+
+font-family: monospace;
+font-size: 11px;
+padding: 2px 8px;
+border: 1px dotted #bbb;
+background: transparent;
+color: #888;
+cursor: pointer;
+transition: all 0.15s;
+}
+
+
     </style>
   </head>
 
   <body>
 <a href="/index.html" id="back-to-index">back do index</a>
-<div class="tag-bar" id="tag-bar">
+
+<button class="expand">
+  filter >
+</button>
+
+
+<div class="tag-bar collapsed" id="tag-bar">
 <input type="text" id="taginput" onkeyup="searchtag()" placeholder="Search for a tag..">
 <ul id="taglist">
 <li><a href="#"><button class="tag-btn active" onclick="filter2('all', this)">all</button></a></li>
@@ -187,6 +228,7 @@ font-size: 11px;
   </body>
 
 <script>
+
 function searchtag() {
 
   var input, filter, ul, li, a, i, txtValue;
@@ -218,6 +260,21 @@ const tags = entry.dataset.tags || '';
 entry.classList.toggle('hidden', tag !== 'all' && !tags.split(' ').includes(tag));
 });
 }
+
+/* -------------------------------
+   EXPANDABLE ENTRIES from lowverve : lowverve.neocities.org
+-------------------------------- */
+document.querySelectorAll(".expand").forEach(button => {
+    button.addEventListener("click", () => {
+        const text = button.nextElementSibling;
+        if (!text) return;
+
+        text.classList.toggle("active");
+        button.textContent = text.classList.contains("active")
+            ? "filter v"
+            : "filter >" ; 
+    });
+});
 
 
 
