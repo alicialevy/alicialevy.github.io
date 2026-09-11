@@ -1,5 +1,5 @@
 Papa.parse(
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vQi8u88PufDDJhfdJen0WKP9kEvQ2y5TAdwXRpq5TFQ2bOKSZLzWiCRHLNceCwaPumtI59MbWojpErz/pub?output=csv",
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vRC4H_kqtC_bQJOZOOEWCp6BwU9GL6haywQyBq6-wsBjZEY5LTyyITgt1cyt6zxpKNOnIFh4EMR-NL1/pub?output=csv",
    {
       download: true,
       complete: function(result) {
@@ -29,7 +29,7 @@ function sort_unique(arr) {
 
 function renderButtons(films) {
     let all_tags = [];
-    let id_film_tags = 7;
+    let id_film_tags = 9;
     let display = document.getElementById("display-buttons");
     let card = document.createElement("div");
     let html = '';
@@ -66,14 +66,19 @@ function renderButtons(films) {
 // à afficher pour le film.
 function renderFilm(film) {
 
-    let id_film_img = 0;
-    let id_film_name = 1;
+    let id_film_name = 0;
+    let id_title_language = 1;
     let id_alt_title = 2;
-    let id_link = 3;
+    let id_film_date = 3;
     let id_film_director = 4;
-    let id_film_date = 5;
-    let id_film_synopsys = 6;
-    let id_film_tags = 7;
+    let id_film_lenght = 5;
+    let id_film_countries = 6;
+    let id_film_tmdb = 7;
+    let id_film_synopsys = 8;
+    let id_film_tags = 9;
+    let id_link = 10;
+    let id_link_source = 11;
+    let id_film_img = 12;
 
     let all_tags = [];
 	// Recuperer les tags dans la bonne colonne
