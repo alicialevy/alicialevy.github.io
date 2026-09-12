@@ -95,34 +95,59 @@ function renderFilm(film) {
 	all_tags = all_tags.concat(this_film_tags);
 
     let html = '';
-    html += '<div class=\"entry\" data-tags=\"' + film[id_film_tags] + '\">';
-    html += '<div class=\"film-img\"><img src=\"' + film[id_film_img] + '\" width=\"100px\"></div>';
-    html += '<div class=\"entry-right\">'
-    html += '<div class=\"film-name\"><a href=\"' + film[id_link] + '\" target=\"_blank\">' + film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += ' · <span class=\"alt-title\">' + film[id_alt_title] + '</span>' } '</div>';
-    html += '<div class=\"film-director\">' + film[id_film_director] + '</div>'
-    html += '<div class=\"film-date\">' + film[id_film_date] + '</div>'
-    html += '<div class=\"film-synopsis\">' + film[id_film_synopsys] + '</div>'
-    //html += '<div class=\"film-tags\"><a href=\"#\"><button class=\"tag\" onclick=\"filter2(\'' + film[id_film_tags] + '\', this)\">' + film[id_film_tags] + '</button></a></div>'
-    //html += '<div class=\"film-tags\">' + film[id_film_tags] + '</div>'
-    
-       for (let i=0; i < all_tags.length; i++) {
-	//html += (all_tags[i]) ;
-    html += '<div class=\"film-tags\"><li><a href=\"#\"><button class=\"tag\" onclick=\"filter2(\'' + (all_tags[i]) + '\' , this)\">' + (all_tags[i]) + '</button></a></li></div>'
+    html += '<tr class=\"item\">'
+    html +='<td><div class =\"film-name\"><a href=\"' + film[id_film_name] + '.html\" target=\"iframe\">'+ film[id_film_name] + '</a> · <span class=\"film-alt-name\">' + film[id_alt_title] + '</span></div></td>';
+    html +='<td><div class =\"directors\">'+ film[id_film_director] +'</div></td>';
+    html +='<td><div class =\"year\">'+ film[id_film_date] +'</div></td>';
+    html +='<td><div class =\"duration\">'+ film[id_film_lenght]+'</div></td>';
+    html +='<td><div class=\"tags\">';
+    for (let i=0; i < all_tags.length; i++) {
+    html += '<li><a href=\"#\"><button class=\"tag\" onclick=\"filter2(\'' + (all_tags[i]) + '\' , this)\">' + (all_tags[i]) + '</button></a></li>'
     }
-
-    html += '</div>'
-    html += '</div>'
-
+    html += '</div></td>'
+    html +='<td><div class =\"country\">'+ film[id_film_countries] +'</div></td>';
+    html +='</tr>'
     return html;
 
 }
 
+
+ //   html += '<div id=\"entry\" data-tags=\"' + film[id_film_tags] + '\">'
+ //   html += '<tr><div class=\"item\">'
+ //   html += '<td><div class=\"film-name\"><a href=\"' + film[id_film_name] + '.html\" target=\"iframe\">' + film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += ' · <span class=\"alt-title\">' + film[id_alt_title] + '</span>' } '</div></td>';
+ //   html += '<td><div class=\"film-director\">' + film[id_film_director] + '</div></td>'
+ //   html += '<td><div class=\"film-date\">' + film[id_film_date] + '</div></td>'
+ //   html += '<td><div class=\"film-lenght\">' + film[id_film_lenght] + '</div></td>'
+ //      for (let i=0; i < all_tags.length; i++) {
+ //   html += '<td><div class=\"film-tags\"><li><a href=\"#\"><button class=\"tag\" onclick=\"filter2(\'' + (all_tags[i]) + '\' , this)\">' + (all_tags[i]) + '</button></a></li></div></td>'
+ //   }
+ //    html += '<td><div class=\"film-country\">' + film[id_film_countries] + '</div></td>'
+ //   html += '</div>'
+ //   html += '</div>'
+
+ //   html += '</tr>'
+ //    html += '</div>'
+ //    html += '</div>'
+    
+    
+
+    
+
 // Fonction qui affiche tous les films, appelée par PapaParse
 function renderData(data) {
-    let display = document.getElementById("display-films");
+    let display = document.getElementById("display-films-tab");
+    let html = "";
+    html += "<tr>";
+    html += "<th class = \"film-name\">name</th>";
+    html += "<th class = \"director\">director</th>";
+    html += "<th class = \"year\">year</th>";
+    html += "<th class = \"duration\">duration</th>";
+    html += "<th class = \"tags-table sorttable_nosort\">tags</th>";
+    html += "<th class = \"country\">country</th>";   
+    html += "</tr>";
+
     for (let i = 1; i < data.length; i++) {
-	let card = document.createElement("div");
-	card.innerHTML = renderFilm(data[i]);
-	display.appendChild(card);
+        html += renderFilm(data[i]);
     }
+    display.innerHTML = html;
 }
