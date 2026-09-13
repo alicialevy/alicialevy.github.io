@@ -61,6 +61,11 @@ function renderButtons(films) {
     
 }
 
+
+
+
+
+
 // Fonction qui prend en argument un "film" (à savoir un tableau de chaines
 // de caractères) et qui renvoit une chaine de caractère avec le code HTML
 // à afficher pour le film.
@@ -94,20 +99,55 @@ function renderFilm(film) {
 	// Ajouter les tags du film courant à la liste de tous les tags
 	all_tags = all_tags.concat(this_film_tags);
 
+
+    let all_countries = [];
+	let countries = film[id_film_countries];
+	let this_film_countries = countries.split(";");
+	for(let j = 0; j < this_film_countries.length; j++) {
+	    this_film_countries[j] = this_film_countries[j].trim();
+	}
+	all_countries = all_countries.concat(this_film_countries);
+
+
+    let all_directors = [];
+	let directors = film[id_film_director];
+	let this_film_directors = directors.split(";");
+	for(let j = 0; j < this_film_directors.length; j++) {
+	    this_film_directors[j] = this_film_directors[j].trim();
+	}
+	all_directors = all_directors.concat(this_film_directors);
+
+
+
+
     let html = '';
-    html += '<tr class=\"item entry\" data-tags=\"' + film[id_film_tags] + '\">';
+    html += '<tr class=\"item entry\" director\"'+ film[id_film_director] + '\" data-country=\"' + film[id_film_countries] + '\" data-tags=\"' + film[id_film_tags] + '\" >';
     html +='<td><div class =\"year\">'+ film[id_film_date] +'</div></td>';
-    //if (film[id_alt_title] != '') { html += '<td sorttable_customkey=\"' + film[id_alt_title] + '\"><div class =\"film-name\"><a href=\"' + film[id_film_name] + '.html\" target=\"iframe\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += '<br><span class=\"alt-title\">' + film[id_alt_title] + '</span>' }; '</div></td>' } else { html +='<td sorttable_customkey=\"' + film[id_film_name] + '\"><div class =\"film-name\"><a href=\"' + film[id_film_name] + '.html\" target=\"iframe\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += '<br><span class=\"alt-title\">' + film[id_alt_title] + '</span>' }; '</div></td>' };
-    html +='<td sorttable_customkey=\"'+ film[id_film_name] + '\"><div class =\"film-name\"><a href=\"' + film[id_film_name] + '.html\" target=\"iframe\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += '<br><span class=\"alt-title\">' + film[id_alt_title] + '</span>' }; '</div></td>';
-    html +='<td><div class =\"directors\">'+ film[id_film_director] +'</div></td>';
+    if (film[id_alt_title] != '') { html += '<td sorttable_customkey=\"' + film[id_alt_title] + '\"><div class =\"film-name\"><a href=\"' + film[id_film_name] + '.html\" target=\"iframe\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += '<br><span class=\"alt-title\">' + film[id_alt_title] + '</span>' }; '</div></td>' } else { html +='<td sorttable_customkey=\"' + film[id_film_name] + '\"><div class =\"film-name\"><a href=\"' + film[id_film_name] + '.html\" target=\"iframe\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += '<br><span class=\"alt-title\">' + film[id_alt_title] + '</span>' }; '</div></td>' };
+    //html +='<td sorttable_customkey=\"'+ film[id_film_name] + '\"><div class =\"film-name\"><a href=\"' + film[id_film_name] + '.html\" target=\"iframe\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += '<br><span class=\"alt-title\">' + film[id_alt_title] + '</span>' }; '</div></td>';
     
-    html +='<td><div class =\"duration\">'+ film[id_film_lenght]+'</div></td>';
+    
+    
+    html +='<td><div class \"directors\">';
+     for (let i=0; i < all_directors.length; i++) {
+    html +='<li><a href=\"#\"><button class =\"director\" onclick=\"filterdirector(\'' + (all_directors[i]) + '\' , this)\">' + (all_directors[i]) + '</button></a></li>';
+     }
+    html +='</div></td>';
+    //html +='<td><div class =\"directors\">'+ film[id_film_director] +'</div></td>';
+
+    html +='<td sorttable_customkey=\"'+ film[id_film_lenght] +'\"><div class =\"duration\">'+ film[id_film_lenght]+' min</div></td>';
     html +='<td><div class=\"tags\">';
     for (let i=0; i < all_tags.length; i++) {
-    html += '<li><a href=\"#\"><button class=\"tag\" onclick=\"filter2(\'' + (all_tags[i]) + '\' , this)\">' + (all_tags[i]) + '</button></a></li>'
+    html += '<li><a href=\"#\"><button class=\"tag\" onclick=\"filter2(\'' + (all_tags[i]) + '\' , this)\">' + (all_tags[i]) + '</button></a></li>';
     }
     html += '</div></td>'
-    html +='<td><div class =\"country\">'+ film[id_film_countries] +'</div></td>';
+    //html +='<td><div class =\"country\">'+ film[id_film_countries] +'</div></td>';
+    
+    html +='<td><div class \"countries\">';
+     for (let i=0; i < all_countries.length; i++) {
+    html +='<li><a href=\"#\"><button class =\"country\" onclick=\"filtercountry(\'' + (all_countries[i]) + '\' , this)\">' + (all_countries[i]) +'</button></a></li>';
+     }
+    html += '</div></td>'
     html +='</tr>'
     return html;
     

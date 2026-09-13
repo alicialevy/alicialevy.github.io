@@ -82,9 +82,9 @@ table{
     
     th, td {
     border-bottom: 1px dotted #233d29;
-    padding-top: 0px;
+    padding-top: 3px;
     padding-right: 0px;
-    padding-bottom: 0px;
+    padding-bottom: 3px;
     padding-left: 0px;
     text-align: left;
     }
@@ -108,7 +108,9 @@ table{
             font-size: smaller;
             color: #888;}
 
-.directors { font-weight: bold; }
+
+
+.duration { text-align: right; padding-right: 20px;}
 
 .film-synopsis {font-size: 10px;}
 
@@ -175,6 +177,53 @@ transition: all 0.15s;
 
 .tag-btn:hover { border-color: #888; color: #111; } 
 .tag-btn.active { background-color: rgb(144, 94, 238); color: #111; border-color: #111; }
+
+
+.country {
+   font-size: 8px;
+   border: none;
+   background: none;
+   cursor: pointer;
+   padding: none;
+}
+
+.country-btn {
+font-family: monospace;
+font-size: 11px;
+padding: 2px 8px;
+border: none;
+background: none;
+cursor: pointer;
+transition: all 0.15s;
+}
+
+.country-btn:hover { text-decoration: dotted; background: none; background-color: none;} 
+.country-btn.active { background-color: none; }
+
+.director-btn {
+font-family: monospace;
+font-size: 11px;
+padding: 2px 8px;
+border: 1px dotted #bbb;
+background: transparent;
+color: #888;
+cursor: pointer;
+transition: all 0.15s;
+}
+
+.director {
+   font-size: 8px;
+   color:rgb(62, 37, 109) ;
+   border: 1px dotted #bbb;
+   background: none;
+   cursor: pointer;
+   padding: none;
+}
+
+
+.director-btn:hover { border-color: #888; color: #111; } 
+.director-btn.active { background-color: rgb(144, 94, 238); color: #111; border-color: #111; }
+
 
 
 .acc-trigger {
@@ -280,11 +329,10 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
   <body>
 <a href="/index.html" id="back-to-index">back do index</a>
 
+<!-- VERSION AVEC BOUTON FILTRE
 <button class="expand">
   filter >
 </button>
-
-
 <div class="tag-bar collapsed" id="tag-bar">
 <input type="text" id="taginput" onkeyup="searchtag()" placeholder="Search for a tag..">
 <ul id="taglist">
@@ -292,6 +340,15 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 <span id="display-buttons"></span>
 </ul>
 </div>  
+-->
+
+<div class="tag-bar" id="tag-bar">
+<input type="text" id="taginput" onkeyup="searchtag()" placeholder="Search for a tag..">
+<ul id="taglist">
+<li><a href="#"><button class="tag-btn active" onclick="filter2('all', this)">all</button></a></li>
+<span id="display-buttons"></span>
+</ul>
+</div> 
 
 <br>
 <br>
@@ -359,6 +416,24 @@ btn.classList.add('active');
 document.querySelectorAll('.entry').forEach(entry => {
 const tags = entry.dataset.tags || '';
 entry.classList.toggle('hidden', tag !== 'all' && !tags.split(' ').includes(tag));
+});
+}
+
+function filtercountry(country, btn) {
+document.querySelectorAll('.country-btn').forEach(b => b.classList.remove('active'));
+btn.classList.add('active');
+document.querySelectorAll('.entry').forEach(entry => {
+const countries = entry.dataset.country || '';
+entry.classList.toggle('hidden', country !== 'all' && !countries.split(' ').includes(country));
+});
+}
+
+function filterdirector(director, btn) {
+document.querySelectorAll('.director-btn').forEach(b => b.classList.remove('active'));
+btn.classList.add('active');
+document.querySelectorAll('.entry').forEach(entry => {
+const directors = entry.dataset.director || '';
+entry.classList.toggle('hidden', director !== 'all' && !directors.split(' ').includes(director));
 });
 }
 
