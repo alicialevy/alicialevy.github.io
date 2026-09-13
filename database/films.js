@@ -95,10 +95,12 @@ function renderFilm(film) {
 	all_tags = all_tags.concat(this_film_tags);
 
     let html = '';
-    html += '<tr class=\"item\">'
-    html +='<td><div class =\"film-name\"><a href=\"' + film[id_film_name] + '.html\" target=\"iframe\">'+ film[id_film_name] + '</a> · <span class=\"film-alt-name\">' + film[id_alt_title] + '</span></div></td>';
-    html +='<td><div class =\"directors\">'+ film[id_film_director] +'</div></td>';
+    html += '<tr class=\"item\">';
+    //html += '<div class=\"entry\" data-tags=\"' + film[id_film_tags] + '\">';
     html +='<td><div class =\"year\">'+ film[id_film_date] +'</div></td>';
+    html +='<td><div class =\"film-name\"><a href=\"' + film[id_film_name] + '.html\" target=\"iframe\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += ' <br> <span class=\"alt-title\">' + film[id_alt_title] + '</span>' } + '</div></td>';
+    html +='<td><div class =\"directors\">'+ film[id_film_director] +'</div></td>';
+    
     html +='<td><div class =\"duration\">'+ film[id_film_lenght]+'</div></td>';
     html +='<td><div class=\"tags\">';
     for (let i=0; i < all_tags.length; i++) {
@@ -108,7 +110,7 @@ function renderFilm(film) {
     html +='<td><div class =\"country\">'+ film[id_film_countries] +'</div></td>';
     html +='</tr>'
     return html;
-
+    
 }
 
 
@@ -137,17 +139,26 @@ function renderFilm(film) {
 function renderData(data) {
     let display = document.getElementById("display-films-tab");
     let html = "";
-    html += "<tr>";
-    html += "<th class = \"film-name\">name</th>";
-    html += "<th class = \"director\">director</th>";
-    html += "<th class = \"year\">year</th>";
-    html += "<th class = \"duration\">duration</th>";
-    html += "<th class = \"tags-table sorttable_nosort\">tags</th>";
-    html += "<th class = \"country\">country</th>";   
-    html += "</tr>";
+    html += '<table class=\"sortable\" id=\"tableau\">'
+    html += '<tr style=\"background-color: transparent;\">';
+    html += '<th class = \"year-line\">year</th>';
+    html += '<th class = \"film-name-line\">name</th>';
+    html += '<th class = \"directors-line\">director</th>';
+    
+    html += '<th class = \"duration-line\">duration</th>';
+    html += '<th class = \"tags-line sorttable_nosort\">tags</th>';
+    html += '<th class = \"country-line\">country</th>';   
+    html += '</tr>';
 
     for (let i = 1; i < data.length; i++) {
         html += renderFilm(data[i]);
     }
+    html += '</table>'
     display.innerHTML = html;
+    
+
+    sorttable.makeSortable(
+    document.getElementById("tableau")
+);
+
 }

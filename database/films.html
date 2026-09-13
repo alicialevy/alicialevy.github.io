@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="style.css">
     <style>
 
+
+
+
  .wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -23,62 +26,12 @@
     
 }
 
-  table{
-        width: 100%;
-        border-collapse: collapse;
-        text-align: left;
-        table-layout: auto;
-        vertical-align: top;
-    }
-
-
-    .film-img{
-       width: 8%;
-    }
-
-    .film-name{
-        width: 35%;
-        font-weight: bold;
-    }
-    
-    tr:hover{
-        background-color: burlywood;
-    }
-    
-    th, td {
-    border-bottom: 1px dotted #233d29;
-    padding-top: 0px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-    padding-left: 0px;
-    text-align: left;
-}
-
-table.sortable th::after, th.sorttable_sorted::after, th.sorttable_sorted_reverse::after {
-  content: " ";
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-}
-
 iframe {
     width: 100%;
     height: 100%;
 }
 
-th.sorttable_sorted::after {
-  background: url(arrow-down.png);
-  background-size: contain;
-}
-th.sorttable_sorted_reverse::after {
-  background: url(arrow-up.png);
-  background-size: cover;
-}
-#sorttable_sortfwdind, #sorttable_sortrevind { display: none; } 
 
-table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
-    content: ">" 
-}
 
 
 
@@ -110,6 +63,61 @@ a:hover{
     background-color: #e5d3fc8b;
 }
 
+
+
+
+/*TABLE*/
+
+table{
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        table-layout: auto;
+        vertical-align: top;
+    }
+
+    tr:hover{
+        background-color: burlywood;
+    }
+    
+    th, td {
+    border-bottom: 1px dotted #233d29;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    text-align: left;
+    }
+
+/*TABLE LINES*/
+.year-line {width: 5%;}
+.film-name-line{width: 40%;}
+.directors-line { width: 30% ;}
+.duration-line{width:8%;}
+.tags-line{width:20%;}
+.country-line{}
+
+/*TEXT LINES*/
+
+.film-name{
+        font-size: medium;
+        font-weight: bold;
+        padding-left: 2%;
+    }
+.alt-title {font-style: italic;
+            font-size: smaller;
+            color: #888;}
+
+.directors { font-weight: bold; }
+
+.film-synopsis {font-size: 10px;}
+
+.film-img { float:left; position:absolute; width:100px; padding-right: 10px; padding-bottom: 20px;}
+
+
+
+
+/*TAG SYSTEM*/
 .tag-bar {
   display: flex;
     flex-direction: column;
@@ -155,6 +163,30 @@ transition: all 0.15s;
 .tag-btn.active { background-color: rgb(144, 94, 238); color: #111; border-color: #111; }
 
 
+.acc-trigger {
+display: flex;
+justify-content: space-between;
+align-items: baseline;
+cursor: pointer;
+color: blue;
+user-select: none;
+gap: 10px;
+font-size: 11px;
+}
+
+.acc-trigger:hover .acc-label { text-decoration: underline; }
+.acc-meta { color: #aaa; font-size: 11px; flex-shrink: 0; }
+
+.acc-body { display: none; padding: 5px 50px 0 0;}
+.acc-item.open .acc-body { display: block; }
+.acc-body p { margin-bottom: 8px; }
+.acc-body p:last-child { margin-bottom: 0; }
+.acc-body b { display: block; margin-bottom: 4px; }
+.acc-body ul { list-style: none; padding: 0; }
+.acc-body ul li {border-bottom: 1px dotted #e8e8e8; }
+.acc-body ul li:last-child { border-bottom: none; }
+
+/*SEARCH TAG*/
 
 #taginput {   
 font-family: monospace;
@@ -172,44 +204,6 @@ flex: 1;
 overflow-y: auto;
 padding: 0 50px 0 12px;
 }
-
-
-
-.film-director { font-weight: bold; }
-.alt-title {font-style: italic;}
-.film-synopsis {font-size: 10px;}
-
-.film-img { float:left; position:absolute; width:100px; padding-right: 10px; padding-bottom: 20px;}
-.film-name { font-size: medium;}
-
-.acc-trigger {
-display: flex;
-justify-content: space-between;
-align-items: baseline;
-cursor: pointer;
-color: blue;
-user-select: none;
-gap: 10px;
-font-size: 11px;
-}
-
-.acc-item { border-bottom: 1px dotted #d3d3d3; }
-.acc-item:last-child { border-bottom: none; }
-
-
-.acc-trigger:hover .acc-label { text-decoration: underline; }
-.acc-meta { color: #aaa; font-size: 11px; flex-shrink: 0; }
-
-.acc-body { display: none; padding: 5px 50px 0 0;}
-.acc-item.open .acc-body { display: block; }
-.acc-body p { margin-bottom: 8px; }
-.acc-body p:last-child { margin-bottom: 0; }
-.acc-body b { display: block; margin-bottom: 4px; }
-.acc-body ul { list-style: none; padding: 0; }
-.acc-body ul li {border-bottom: 1px dotted #e8e8e8; }
-.acc-body ul li:last-child { border-bottom: none; }
-
-
 
 
 
@@ -243,6 +237,29 @@ cursor: pointer;
 transition: all 0.15s;
 }
 
+
+/*SORTTABLE*/
+
+table.sortable th::after, th.sorttable_sorted::after, th.sorttable_sorted_reverse::after {
+  content: " ";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+}
+
+th.sorttable_sorted::after {
+  background: url(arrow-down.png);
+  background-size: contain;
+}
+th.sorttable_sorted_reverse::after {
+  background: url(arrow-up.png);
+  background-size: cover;
+}
+#sorttable_sortfwdind, #sorttable_sortrevind { display: none; } 
+
+table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after { 
+    content: ">" 
+}
 
     </style>
   </head>
@@ -286,8 +303,8 @@ transition: all 0.15s;
 
 <div class="wrapper">
   <div class="left">
-    <table class="sortable" id="display-films-tab">
-   </table>
+    <div id="display-films-tab">
+    </div>
    
    </div>
     <div class="right">
