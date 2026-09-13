@@ -95,10 +95,10 @@ function renderFilm(film) {
 	all_tags = all_tags.concat(this_film_tags);
 
     let html = '';
-    html += '<tr class=\"item\">';
-    //html += '<div class=\"entry\" data-tags=\"' + film[id_film_tags] + '\">';
+    html += '<tr class=\"item entry\" data-tags=\"' + film[id_film_tags] + '\">';
     html +='<td><div class =\"year\">'+ film[id_film_date] +'</div></td>';
-    html +='<td><div class =\"film-name\"><a href=\"' + film[id_film_name] + '.html\" target=\"iframe\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += ' <br> <span class=\"alt-title\">' + film[id_alt_title] + '</span>' } + '</div></td>';
+    //if (film[id_alt_title] != '') { html += '<td sorttable_customkey=\"' + film[id_alt_title] + '\"><div class =\"film-name\"><a href=\"' + film[id_film_name] + '.html\" target=\"iframe\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += '<br><span class=\"alt-title\">' + film[id_alt_title] + '</span>' }; '</div></td>' } else { html +='<td sorttable_customkey=\"' + film[id_film_name] + '\"><div class =\"film-name\"><a href=\"' + film[id_film_name] + '.html\" target=\"iframe\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += '<br><span class=\"alt-title\">' + film[id_alt_title] + '</span>' }; '</div></td>' };
+    html +='<td sorttable_customkey=\"'+ film[id_film_name] + '\"><div class =\"film-name\"><a href=\"' + film[id_film_name] + '.html\" target=\"iframe\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += '<br><span class=\"alt-title\">' + film[id_alt_title] + '</span>' }; '</div></td>';
     html +='<td><div class =\"directors\">'+ film[id_film_director] +'</div></td>';
     
     html +='<td><div class =\"duration\">'+ film[id_film_lenght]+'</div></td>';
