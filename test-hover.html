@@ -1,0 +1,53 @@
+<html>
+<head>
+
+
+<style>
+
+tr:hover {
+    background-color: blueviolet;
+}
+
+
+</style>
+
+</head>
+<body>
+<p>Test Hover IFrame</p>
+
+<table>
+    <tr class ="trigger" data-src="arrow-up.png">
+        <td>Interview</td>
+        <td>Caroline Leaf, Veronika Soul</td>
+        <td>1979</td>
+    </tr>
+
+    <tr class ="trigger" data-src="arrow-down.png">
+        <td>La sole, entre l'eau et le sable</td>
+        <td>Angèle Chiodo</td>
+        <td>2011</td>
+    </tr>
+</table>
+</body>
+<iframe id="preview"  src="index.html"> </iframe>
+</html>
+<script>
+
+
+
+const trigger = document.querySelectorAll('.trigger');
+const iframe = document.getElementById('preview');
+
+const originalSrc = iframe.src;
+
+trigger.forEach(trigger => {
+    
+  
+    trigger.addEventListener('mouseenter', () => {
+        const newSrc = trigger.getAttribute('data-src');
+        iframe.src = newSrc;
+    });
+
+});
+
+</script>
