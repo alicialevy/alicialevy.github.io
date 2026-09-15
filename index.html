@@ -20,7 +20,12 @@
     
 }
 
-
+.iframe-link iframe {
+    display: none;
+}
+.iframe-link:hover iframe {
+    display: block;
+}
   
     body{
   width: 100%;
@@ -124,7 +129,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
             <th class = "country">country</th>
         </tr>
 
-        <tr class="item">
+        <tr class="item"></tr>
             <td><div class ="film-name"><a href="film-name.html" target="iframe">film name</a></div> · <div class="film-alt-name">film alt name</div></td>
             <td><div class ="directors">director</div></td>
             <td><div class ="year">year</div></td>
@@ -373,7 +378,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     </table>
     </div>
     <div class="right">
-    <iframe name="iframe"></iframe>
+        <iframe name="iframe"></iframe>
     </div>
 </div>
 

@@ -5,6 +5,7 @@ Papa.parse(
       complete: function(result) {
         renderButtons(result.data);
          renderData(result.data);
+         renderCountries(result.data);
       }
    }
 );
@@ -61,8 +62,39 @@ function renderButtons(films) {
     
 }
 
+function renderCountries(films) {
+    let all_countries = [];
+    let id_film_countries = 6
+    let display = document.getElementById("display-countries");
+    let card = document.createElement("div");
+    let html = '';
+    for (let i = 1; i < films.length; i++) {
+	// Recuperer les tags dans la bonne colonne
+	let countries = films[i][id_film_countries];
+	// Decouper la chaine et mettre les tags du film courant dans un tableau
+	// "tag1; tag2; tag3" -> [ "tag1", "tag2", "tag3"]
+	let this_film_countries = countries.split(";");
+	// Virer les espaces en debut et en fin de mot:
+	// " tag  " -> "tag"
+	for(let j = 0; j < this_film_countries.length; j++) {
+	    this_film_countries[j] = this_film_countries[j].trim();
+	}
+	// Ajouter les tags du film courant à la liste de tous les tags
+	all_countries = all_countries.concat(this_film_countries);
+    }
+    // Trier les tags par ordre alphabetique et supprimer les doublons
+    all_countries = sort_unique(all_countries);
 
+    // A remplacer par le code qui va vraiment afficher les vrais boutons
+    for (let i=0; i < all_countres.length; i++) {
+	html += (all_countries[i]) ;
+    html += '<li><a href=\"#\"><button class=\"country\" onclick=\"filtercountry(\'' + (all_countries[i]) + '\' , this)\">' + (all_countries[i]) + '</button></a></li>'
+    }
 
+    card.innerHTML = html;
+    display.appendChild(card);
+    
+}
 
 
 
@@ -107,7 +139,7 @@ function renderFilm(film) {
 	    this_film_countries[j] = this_film_countries[j].trim();
 	}
 	all_countries = all_countries.concat(this_film_countries);
-
+    all_countries = sort_unique(all_countries);
 
     let all_directors = [];
 	let directors = film[id_film_director];
@@ -115,15 +147,15 @@ function renderFilm(film) {
 	for(let j = 0; j < this_film_directors.length; j++) {
 	    this_film_directors[j] = this_film_directors[j].trim();
 	}
-	all_directors = all_directors.concat(this_film_directors);
-
+    all_directors = all_directors.concat(this_film_directors);
+    all_directors = sort_unique(all_directors);
 
 
 
     let html = '';
-    html += '<tr class=\"item entry\" director\"'+ film[id_film_director] + '\" data-country=\"' + film[id_film_countries] + '\" data-tags=\"' + film[id_film_tags] + '\" >';
+    html += '<tr class=\"item entry\" data-iframe=\"'+ film[id_film_name] + '\" data-director=\"'+ film[id_film_director] + '\" data-country=\"' + film[id_film_countries] + '\" data-tags=\"' + film[id_film_tags] + '\" >';
     html +='<td><div class =\"year\">'+ film[id_film_date] +'</div></td>';
-    if (film[id_alt_title] != '') { html += '<td sorttable_customkey=\"' + film[id_alt_title] + '\"><div class =\"film-name\"><a href=\"' + film[id_film_name] + '.html\" target=\"iframe\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += '<br><span class=\"alt-title\">' + film[id_alt_title] + '</span>' }; '</div></td>' } else { html +='<td sorttable_customkey=\"' + film[id_film_name] + '\"><div class =\"film-name\"><a href=\"' + film[id_film_name] + '.html\" target=\"iframe\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += '<br><span class=\"alt-title\">' + film[id_alt_title] + '</span>' }; '</div></td>' };
+    if (film[id_alt_title] != '') { html += '<td sorttable_customkey=\"' + film[id_alt_title] + '\"><div class =\"film-name\"><a class = "film-name-link" href=\"' + film[id_link] + '\" target=\"_blank\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += '<br><span class=\"alt-title\">' + film[id_alt_title] + '</span>' }; '</div></td>' } else { html +='<td sorttable_customkey=\"' + film[id_film_name] + '\"><div class =\"film-name\"><a href=\"' + film[id_link] + '\" target=\"_blank\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += '<br><span class=\"alt-title\">' + film[id_alt_title] + '</span>' }; '</div></td>' };
     //html +='<td sorttable_customkey=\"'+ film[id_film_name] + '\"><div class =\"film-name\"><a href=\"' + film[id_film_name] + '.html\" target=\"iframe\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += '<br><span class=\"alt-title\">' + film[id_alt_title] + '</span>' }; '</div></td>';
     
     
@@ -202,3 +234,9 @@ function renderData(data) {
 );
 
 }
+
+
+
+
+   
+ 

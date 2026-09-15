@@ -15,10 +15,13 @@
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto);
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 .left{
     grid-column: 1 / 3;
+    align-self: flex-start;
 }
 
 .right{
@@ -29,8 +32,18 @@
 iframe {
     width: 100%;
     height: 100%;
+    border: 1px dotted #233d29 ;
 }
 
+.sticky-wrapper {
+  position: sticky;
+  top: 50px; /* Distance from the top of the screen when scrolling */
+}
+
+.sticky-wrapper iframe {
+  width: 100%;
+  height: 80vh; /* Adjust height to fit nicely on the screen */
+}
 
 
 
@@ -113,6 +126,8 @@ table{
 .duration { text-align: right; padding-right: 20px;}
 
 .film-synopsis {font-size: 10px;}
+
+
 
 .film-img { float:left; position:absolute; width:100px; padding-right: 10px; padding-bottom: 20px;}
 
@@ -197,8 +212,8 @@ cursor: pointer;
 transition: all 0.15s;
 }
 
-.country-btn:hover { text-decoration: dotted; background: none; background-color: none;} 
-.country-btn.active { background-color: none; }
+.country-btn:hover { text-decoration: dotted; background: none; background-color: transparent;} 
+.country-btn.active { background-color: transparent; }
 
 .director-btn {
 font-family: monospace;
@@ -213,7 +228,6 @@ transition: all 0.15s;
 
 .director {
    font-size: 8px;
-   color:rgb(62, 37, 109) ;
    border: 1px dotted #bbb;
    background: none;
    cursor: pointer;
@@ -324,6 +338,9 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     content: ">" 
 }
 
+
+
+
     </style>
   </head>
   <body>
@@ -343,12 +360,18 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 -->
 
 <div class="tag-bar" id="tag-bar">
-<input type="text" id="taginput" onkeyup="searchtag()" placeholder="Search for a tag..">
 <ul id="taglist">
-<li><a href="#"><button class="tag-btn active" onclick="filter2('all', this)">all</button></a></li>
-<span id="display-buttons"></span>
+<input type="text" id="taginput" onkeyup="searchtag()" placeholder="Search for a tag..">
+<a href="#"><button class="tag-btn active" onclick="filter2('all', this)">all</button></a> <span id="display-buttons"></span> <span id="display-countries"></span>
 </ul>
 </div> 
+  
+  <button class="tag-btn expand-schools" onclick="filter2('student-film', this)">student-film ></button></li>
+  <div class="collapsed" id="tags-shcool">
+  <a href="#"><button class="tag-btn" onclick="filter2('calarts', this)">calarts</button></a></li>
+  <a href="#"><button class="tag-btn" onclick="filter2('ensad', this)">ensad</button></a></li>
+  </div>
+
 
 <br>
 <br>
@@ -378,7 +401,9 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
    
    </div>
     <div class="right">
-    <iframe name="iframe"></iframe>
+      <div class="sticky-wrapper">
+    <iframe id="preview" src="film-iframe.html"></iframe>
+      </div>
     </div>
 </div>
 
@@ -386,6 +411,16 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
   </body>
 
 <script>
+  const iframe = document.getElementById("");
+
+  document.querySelectorAll("tr[data-iframe]").forEach(row => {
+    row.addEventListener("mouseenter", () => {
+      iframe.src = row.dataset.iframe;
+    });
+  });
+
+
+
 
 function searchtag() {
 
@@ -405,6 +440,8 @@ function searchtag() {
     }
   }
 }
+
+
 
 function acc(trigger) {
 trigger.closest('.acc-item').classList.toggle('open');
@@ -450,7 +487,23 @@ document.querySelectorAll(".expand").forEach(button => {
             ? "filter v"
             : "filter >" ; 
     });
-});
+})
+
+document.querySelectorAll(".expand-schools").forEach(button => {
+    button.addEventListener("click", () => {
+        const text = button.nextElementSibling;
+        if (!text) return;
+
+        text.classList.toggle("active");
+        button.textContent = text.classList.contains("active")
+            ?"student-film v"
+            :"student-film >" ; 
+    });
+})
+
+
+
+  
 
 
 
