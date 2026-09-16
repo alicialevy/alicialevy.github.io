@@ -361,6 +361,10 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 </div>  
 -->
 
+<a href="#"><button class="tag-btn" onclick="renderiframeonhover()">activer fonction renderiframeonhover</button></a>
+
+
+
 <div class="tag-bar" id="tag-bar">
 <ul id="taglist">
 <input type="text" id="taginput" onkeyup="searchtag()" placeholder="Search for a tag..">
@@ -443,7 +447,7 @@ trigger.forEach(trigger => {
         html += '</div>' ;
         html += '<div class=\"button-line\">';
         html += '<a href=\"' + filmlink + '\" target=\"_blank\"><button class=\"link\">watch on ' + filmlinksource + '</button></a>';
-        html += '</div>'
+        html += '</div>';
         html += '<div class="synopsis">';
         html += '<p><b>synospis :</b></p>';
         html += '<p>' + filmsynopsis + '</p>';
