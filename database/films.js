@@ -214,7 +214,7 @@ function renderData(data) {
     let display = document.getElementById("display-films-tab");
     let html = "";
     html += '<table class=\"sortable\" id=\"tableau\">'
-    html += '<tr style=\"background-color: transparent;\" onmouseover=\"renderiframeonhover\">';
+    html += '<tr style=\"background-color: transparent;\" onmouseover=\"renderiframeonhover()\">';
     html += '<th class = \"year-line\">year</th>';
     html += '<th class = \"film-name-line\">name</th>';
     html += '<th class = \"directors-line\">director</th>';
