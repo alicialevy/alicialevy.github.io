@@ -345,6 +345,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     </style>
   </head>
   <body>
+   
 <a href="/index.html" id="back-to-index">back do index</a>
 
 <!-- VERSION AVEC BOUTON FILTRE
@@ -394,6 +395,18 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 </ul>
 </div>   -->
 
+<table>
+  <tr class="trigger">
+    <td>a</td>
+    <td class="filmname">olala</td>
+    <td>olalalalalla</td>
+  </tr>
+  <tr class="trigger">
+    <td>a</td>
+    <td class ="filmname">popopopop</td>
+    <td>olalalalalla</td>
+  </tr>
+</table>
 
 <div class="wrapper">
   <div class="left">
@@ -412,16 +425,35 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
   </body>
 
 <script>
-  const iframe = document.getElementById("");
 
-  document.querySelectorAll("tr[data-iframe]").forEach(row => {
-    row.addEventListener("mouseenter", () => {
-      iframe.src = row.dataset.iframe;
+
+//DYNAMIC IFRAME//
+
+function renderiframeonhover(){
+const trigger = document.querySelectorAll('.trigger');
+
+
+trigger.forEach(trigger => {
+    
+  
+    trigger.addEventListener('mouseenter', () => {
+        const iframeDocument = document.querySelector("iframe").contentDocument;
+        let display = iframeDocument.getElementById("displaydata");
+        let html = "";
+        const filmname = trigger.querySelector(".filmname").innerHTML;
+        html += filmname;
+        display.innerHTML = html;
     });
-  });
+
+});
+}
+
+setTimeout(function (){
+    renderiframeonhover();  // la fonction va se rexecuter dans 3 secondes
+}, 1500);
 
 
-
+//SEARCH TAG//
 
 function searchtag() {
 
@@ -442,7 +474,7 @@ function searchtag() {
   }
 }
 
-
+//TAG SYSTEM//
 
 function acc(trigger) {
 trigger.closest('.acc-item').classList.toggle('open');
