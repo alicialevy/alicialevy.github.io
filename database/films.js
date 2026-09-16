@@ -154,11 +154,10 @@ function renderFilm(film) {
 
 
     let html = '';
-    html += '<tr class=\"item entry trigger\"  data-director=\"'+ film[id_film_director] + '\" data-country=\"' + film[id_film_countries] + '\" data-tags=\"' + film[id_film_tags] + '\" data-img=\"' + film[id_film_img] + '\" >';
+    html += '<tr class=\"item entry trigger\"  data-director=\"'+ film[id_film_director] + '\" data-country=\"' + film[id_film_countries] + '\" data-tags=\"' + film[id_film_tags] + '\" data-img=\"' + film[id_film_img] + '\" data-linksource=\"' + film[id_link_source] + '\" data-synopsis=\"' + film[id_film_synopsys] + '\">';
     html +='<td><div class =\"year\">'+ film[id_film_date] +'</div></td>';
-    if (film[id_alt_title] != '') { html += '<td sorttable_customkey=\"' + film[id_alt_title] + '\"><div class =\"filmname\"><a class = "film-name-link" href=\"' + film[id_link] + '\" target=\"_blank\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += '<br><span class=\"alt-title\">' + film[id_alt_title] + '</span>' }; '</div></td>' } else { html +='<td sorttable_customkey=\"' + film[id_film_name] + '\"><div class =\"filmname\"><a href=\"' + film[id_link] + '\" target=\"_blank\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += '<br><span class=\"alt-title\">' + film[id_alt_title] + '</span>' }; '</div></td>' };
+    if (film[id_alt_title] != '') { html += '<td sorttable_customkey=\"' + film[id_alt_title] + '\"><div class =\"filmname\"><a class = "filmnamelink" href=\"' + film[id_link] + '\" target=\"_blank\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += '<br><span class=\"alt-title\">' + film[id_alt_title] + '</span>' }; '</div></td>' } else { html +='<td sorttable_customkey=\"' + film[id_film_name] + '\"><div class =\"filmname\"><a href=\"' + film[id_link] + '\" target=\"_blank\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += '<br><span class=\"alt-title\">' + film[id_alt_title] + '</span>' }; '</div></td>' };
     //html +='<td sorttable_customkey=\"'+ film[id_film_name] + '\"><div class =\"film-name\"><a href=\"' + film[id_film_name] + '.html\" target=\"iframe\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += '<br><span class=\"alt-title\">' + film[id_alt_title] + '</span>' }; '</div></td>';
-    
     
     
     html +='<td><div class \"directors\">';

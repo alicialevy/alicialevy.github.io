@@ -395,18 +395,6 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 </ul>
 </div>   -->
 
-<table>
-  <tr class="trigger">
-    <td>a</td>
-    <td class="filmname">olala</td>
-    <td>olalalalalla</td>
-  </tr>
-  <tr class="trigger">
-    <td>a</td>
-    <td class ="filmname">popopopop</td>
-    <td>olalalalalla</td>
-  </tr>
-</table>
 
 <div class="wrapper">
   <div class="left">
@@ -439,8 +427,31 @@ trigger.forEach(trigger => {
         const iframeDocument = document.querySelector("iframe").contentDocument;
         let display = iframeDocument.getElementById("displaydata");
         let html = "";
+      
         const filmname = trigger.querySelector(".filmname").innerHTML;
-        html += filmname;
+        const filmdirector = trigger.querySelector(".director").innerHTML;
+        const filmimg = trigger.dataset.img || '';
+        const filmlinksource = trigger.dataset.linksource || '';
+        const filmlink = trigger.querySelector(".filmnamelink").href;
+        const filmsynopsis = trigger.dataset.synopsis || '';
+
+        html += '<div class="image">';
+        html += '<img src=\"' + filmimg + '\">';
+        html += '</div>';
+        html += '<div class=\"film-name\">';
+        html += '<p>' + filmname + ' · <span class=\"film-director\">' + filmdirector +'</span></p>';
+        html += '</div>' ;
+        html += '<div class=\"button-line\">';
+        html += '<a href=\"' + filmlink + '\" target=\"_blank\"><button class=\"link\">watch on ' + filmlinksource + '</button></a>';
+        html += '</div>'
+        html += '<div class="synopsis">';
+        html += '<p><b>synospis :</b></p>';
+        html += '<p>' + filmsynopsis + '</p>';
+        html += '</div>';
+
+
+
+
         display.innerHTML = html;
     });
 
