@@ -16,16 +16,16 @@ tr:hover {
 <p>Test Hover IFrame</p>
 
 <table>
-    <tr class ="trigger" data-src="arrow-up.png">
-        <td>Interview</td>
-        <td>Caroline Leaf, Veronika Soul</td>
-        <td>1979</td>
+    <tr class ="trigger" data-src="index.html">
+        <td><div class = "film-name">Interview</div></td>
+        <td><div class = "film-director">Caroline Leaf, Veronika Soul</div></td>
+        <td><div class = "film-date">1979</div></td>
     </tr>
 
     <tr class ="trigger" data-src="arrow-down.png">
-        <td>La sole, entre l'eau et le sable</td>
-        <td>Angèle Chiodo</td>
-        <td>2011</td>
+        <td><div class = "film-name">La sole, entre l'eau et le sable</div></td>
+        <td><div class = "film-director">Angèle Chiodo</div></td>
+        <td><div class = "film-date">2011</div></td>
     </tr>
 </table>
 </body>
@@ -38,16 +38,34 @@ tr:hover {
 const trigger = document.querySelectorAll('.trigger');
 const iframe = document.getElementById('preview');
 
-const originalSrc = iframe.src;
 
 trigger.forEach(trigger => {
     
   
     trigger.addEventListener('mouseenter', () => {
-        const newSrc = trigger.getAttribute('data-src');
-        iframe.src = newSrc;
+        const iframeDocument = document.querySelector("iframe").contentDocument;
+        let displayname = iframeDocument.getElementById("titre");
+        let html = "";
+        const newSrc = trigger.querySelector(".film-name").innerHTML;
+        html += newSrc;
+        displayname.innerHTML = html;
     });
 
 });
+    
+
+const iframeDocument = document.querySelector("iframe").contentDocument;
+iframeDocument.getElementById("titre")
+
+
+//trigger.forEach(trigger => {
+    
+  
+//    trigger.addEventListener('mouseenter', () => {
+//        const newSrc = trigger.getAttribute('data-src');
+//        iframe.src = newSrc;
+//    });
+
+//});
 
 </script>
