@@ -91,7 +91,10 @@ table{
 
     tr:hover{
         background-color: burlywood;
+        
     }
+
+    
     
     th, td {
     border-bottom: 1px dotted #233d29;
@@ -101,6 +104,13 @@ table{
     padding-left: 0px;
     text-align: left;
     }
+
+    .columnname {
+      color :   rgb(109, 61, 197);
+      cursor: pointer;
+    }
+
+    
 
 /*TABLE LINES*/
 .year-line {width: 5%;}
@@ -131,7 +141,6 @@ table{
 
 
 .film-img { float:left; position:absolute; width:100px; padding-right: 10px; padding-bottom: 20px;}
-
 
 
 
@@ -196,7 +205,7 @@ transition: all 0.15s;
 
 
 .country {
-   font-size: 8px;
+   font-size: 10px;
    border: none;
    background: none;
    cursor: pointer;
@@ -218,7 +227,7 @@ transition: all 0.15s;
 
 .director-btn {
 font-family: monospace;
-font-size: 11px;
+
 padding: 2px 8px;
 border: 1px dotted #bbb;
 background: transparent;
@@ -228,7 +237,7 @@ transition: all 0.15s;
 }
 
 .director {
-   font-size: 8px;
+   font-size: 10px;
    border: 1px dotted #bbb;
    background: none;
    cursor: pointer;
@@ -339,14 +348,49 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     content: ">" 
 }
 
+.navbar {
+  padding: 8px;
+ 
+}
 
+.page {
+    padding-right: 25px;
+    padding-left: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+     background-color: rgba(222, 184, 135, 0.23);
+    font-weight: bold;
+    color: rgb(196, 139, 66);
+    border:1px dotted burlywood;
+}
+.page:hover {
+  background-color: rgba(222, 184, 135, 0.59);
+}
+
+.all {
+  background-color: burlywood;
+}
+
+.all.active {
+  background-color: rgb(237, 183, 113);
+}
 
 
     </style>
   </head>
   <body>
    
-<a href="/index.html" id="back-to-index">back do index</a>
+
+
+<div class="navbar"><a id="titre" href="/index.html"><strong>Pose Clé &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;·</strong></a>
+  <a class="page" href="/fotwarchive.html">past films of the week</a>
+  <a class="page" href="/database/films.html">database</a>
+  <a class="page" href="/cineclub.html">cinéclub</a>
+   <a class="page" href="/about.html">about</a>
+
+
+</div>
+
 
 <!-- VERSION AVEC BOUTON FILTRE
 <button class="expand">
@@ -364,7 +408,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 <div class="tag-bar" id="tag-bar">
 <ul id="taglist">
 <input type="text" id="taginput" onkeyup="searchtag()" placeholder="Search for a tag..">
-<a href="#"><button class="tag-btn active" onclick="filter2('all', this)">all</button></a> <span id="display-buttons"></span> <span id="display-countries"></span>
+<a href="#"><button class="tag-btn active all" onclick="filter2('all', this)">reset-filters</button></a> <span id="display-buttons"></span> <span id="display-countries"></span>
 </ul>
 </div> 
   
@@ -379,21 +423,6 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 <br>
 <br>
 
-<!--<div class="tag-bar" id="tag-bar">
-<input type="text" id="taginput" onkeyup="searchtag()" placeholder="Search for a tag..">
-<ul id="taglist">
-<li><a href="#"><button class="tag-btn active" onclick="filter2('all', this)">all</button></a></li>
-<li><a href="#"><button class="tag-btn" onclick="filter2('animated-paint', this)">animated-paint</button></a></li>
-<li><a href="#"><button class="tag-btn" onclick="filter2('cut-out', this)">cut-out</button></a></li>
-<li><a href="#"><button class="tag-btn" onclick="filter2('stop-motion', this)">stop-motion</button></a></li>
-<li><a href="#"><button class="tag-btn" onclick="filter2('documentary', this)">documentary</button></a></li>
-<li><a href="#"><button class="tag-btn" onclick="filter2('on-paper', this)">on-paper</button></a></li>
-<li><a href="#"><button class="tag-btn" onclick="filter2('digital', this)">digital</button></a></li>
-<li><a href="#"><button class="tag-btn" onclick="filter2('celluloïd', this)">celluloïd</button></a></li>
-<li><a href="#"><button class="tag-btn" onclick="filter2('gouache', this)">gouache</button></a></li>
-<li><a href="#"><button class="tag-btn" onclick="filter2('pixillation', this)">pixillation</button></a></li>
-</ul>
-</div>   -->
 
 
 <div class="wrapper">
@@ -411,6 +440,10 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 
 
   </body>
+<footer>
+  <center><p>2026 · <a href="/index.html">Pose-Clé</a> · hosted on <a href="//https://neocities.org/" target="_blank">Neocities</a></p></center>
+</footer>
+
 
 <script>
 
@@ -429,7 +462,7 @@ trigger.forEach(trigger => {
         let html = "";
       
         const filmname = trigger.querySelector(".filmname").innerHTML;
-        const filmdirector = trigger.querySelector(".director").innerHTML;
+        const filmdirector = trigger.querySelector(".directors").innerText;
         const filmimg = trigger.dataset.img || '';
         const filmlinksource = trigger.dataset.linksource || '';
         const filmlink = trigger.querySelector(".filmnamelink").href;
@@ -445,12 +478,16 @@ trigger.forEach(trigger => {
         html += '<a href=\"' + filmlink + '\" target=\"_blank\"><button class=\"link\">watch on ' + filmlinksource + '</button></a>';
         html += '</div>';
         html += '<div class="synopsis">';
-        html += '<p><b>synospis :</b></p>';
+
+        if (filmsynopsis != '') {
+
+
+        html += '<p  class=\"synopsistitle\"><b>synospis :</b></p>';
         html += '<p>' + filmsynopsis + '</p>';
         html += '</div>';
 
 
-
+        }
 
         display.innerHTML = html;
     });

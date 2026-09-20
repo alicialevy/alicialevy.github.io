@@ -1,3 +1,13 @@
+@font-face {
+	font-family: fshakumo;
+	src: url(fshakumo.ttf);
+}
+
+@font-face {
+	font-family: adelphetrouble;
+	src: url(adelphetroubleflorealregular.ttf);
+}
+
 body{
 		font-family: monospace; 
 		color: black;
@@ -6,6 +16,7 @@ body{
 	} 
 
 a {
+	text-decoration: none;
     color:  rgb(109, 61, 197);
 }
 

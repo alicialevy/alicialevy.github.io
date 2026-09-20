@@ -2,6 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="style.css">
+    
 <style>
   .wrapper {
     .wrapper {
@@ -28,10 +29,18 @@ img {
 }
   }
 
+
+  
   .film-name {
+    font-family: fshakumo;
     padding-left: 20px;
     font-weight: bold;
     font-size: large;
+  }
+
+  .alt-title {
+     
+     font-size: small;
   }
 
   .film-director {
@@ -43,9 +52,9 @@ img {
     font-family: monospace;
 font-size: 11px;
 padding: 2px 8px;
-border: 1px dotted #bbb;
+border: 1px dotted rgb(125, 86, 199);
 background: rgba(164, 164, 214, 0.514);
-color: rgb(62, 37, 109);
+color:rgb(109, 61, 197);
 cursor: pointer;
 transition: all 0.15s;
 }
@@ -54,6 +63,33 @@ transition: all 0.15s;
 .button-line {
     padding-left: 30px;
 }
+
+.director-btn {
+font-family: monospace;
+padding: 2px 8px;
+background: transparent;
+color: #888;
+cursor: pointer;
+transition: all 0.15s;
+}
+
+.director {
+   font-size: 12px;
+   border: none;
+   background: none;
+   cursor: pointer;
+   padding: none;
+}
+
+
+.director-btn:hover { border-color: #888; color: #111; } 
+.director-btn.active { background-color: rgb(144, 94, 238); color: #111; border-color: #111; }
+
+li {
+  display: inline;
+  list-style-type: none;
+}
+
 
   
 </style>
@@ -72,7 +108,7 @@ transition: all 0.15s;
          </div>
 
          <div class="synopsis">
-            <p><b>synospis :</b></p>
+            <p class="synopsistitle"><b>synopsis :</b></p>
             <p>This work is based on Chapter One of Hans Christian Andersen’s The Snow Queen. The original text depicts a disaster brought about tools and technology. There is a connection between this theme and nuclear power plant accident that occurred in Japan in 2011. I attempted to create a new form of animation film through an interleaving depiction of the original story and a real accident.</p>
          </div>
     </div>
