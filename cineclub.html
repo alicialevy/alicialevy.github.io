@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="database/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="cineclub.js" defer></script>
+<style>
+
+  
+  
+    body{
+  width: 100%;
+  height: 100%;
+    }
+
+
+     .wrapper {
+      
+  display: grid;
+  grid-template-columns: 300px 300px 100px 300px 300px;
+  grid-gap: 10px;
+  grid-template-rows: 100px 50px;
+}
+
+
+.image {
+  grid-column: 4/5;
+    grid-row: 1/3;
+}
+
+.image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.synopsis{
+  grid-column: 5;
+    grid-row: 1;
+    text-align: justify;
+}
+
+.technique{
+  grid-column: 5;
+  grid-row: 2;
+  align-self: end;
+}
+
+  
+  .film-name {
+    grid-column: 1;
+     grid-row: 1;
+    font-family: fshakumo;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: large;
+  }
+
+  .alt-title {
+     
+     font-size: small;
+  }
+
+  .film-director {
+    grid-column: 2;
+    font-weight: normal;
+    font-size: medium;
+  }
+
+  .duree {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  .date {
+    grid-column: 3;
+    grid-row: 2;
+    align-self: end;
+  }
+
+  button {
+    font-family: monospace;
+font-size: 11px;
+padding: 2px 8px;
+border: 1px dotted rgb(125, 86, 199);
+background: rgba(164, 164, 214, 0.514);
+color:rgb(109, 61, 197);
+cursor: pointer;
+transition: all 0.15s;
+}
+  
+
+
+.navbar {
+  padding: 8px;
+  padding-bottom: 20px;
+  border-bottom: dotted 1px;
+ 
+}
+
+.page {
+    padding-right: 25px;
+    padding-left: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+     background-color: rgba(222, 184, 135, 0.23);
+    font-weight: bold;
+    color: rgb(196, 139, 66);
+    border:1px dotted burlywood;
+}
+
+.posecle {
+  font-size: large;
+  padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+
+.page:hover {
+  background-color: rgba(222, 184, 135, 0.59);
+}
+
+</style>
+</head>
+<body>
+    
+    
+<div class="navbar"><a class="posecle" href="/index.html"><strong>Pose Clé &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;·</strong></a>
+  <a class="page" href="/database/films.html">database</a>
+  <a class="page" href="/fotwarchive.html">past films of the week</a>
+  <a class="page" href="/cineclub.html">cinéclub</a>
+  <a class="page about" href="/about.html">about</a>
+</div>
+
+<p>Ciné-Club mensuel à Paris</p>
+<p><b>Séance 1:</b> Jeudi 8 octobre 19h, à <a href="https://cesure.paris/" target="_blank">Césure</a>,<br></p>
+
+<div id="display-films"></div>
+
+<!-- EXEMPLE CODE GENERE
+<div class="wrapper">
+     <div class="film-name">
+      Goodbye Waves
+     </div>
+     <div class="film-director">
+      RuiHan Yang
+     </div>
+     <div class="duree">
+       8min30
+     </div>
+     <div class="date">
+      2025
+     </div>
+     <div class="image">
+      <img class="image" src="seance1/goodbyewaves.png">
+     </div>
+     <div class="synopsis">
+      Au bord de l’eau, une femme attend une personne.
+     </div>
+     <div class="technique">
+      animation traditionnelle et digitale, fusain sur papier
+     </div>
+
+
+</div>
+  -->
+    
+    
+
+
+
+</body>
+<footer>
+  <center><p>2026 · <a href="/index.html">Pose-Clé</a> · hosted on <a href="https://neocities.org/" target="_blank">Neocities</a></p></center>
+</footer>
+
+
+
+</html>

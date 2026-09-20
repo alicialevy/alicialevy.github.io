@@ -33,7 +33,7 @@ function renderButtons(films) {
     let all_tags = [];
     let id_film_tags = 9;
     let display = document.getElementById("display-buttons");
-    let card = document.createElement("div");
+    let card = document.createElement("span");
     let html = '';
     for (let i = 1; i < films.length; i++) {
 	// Recuperer les tags dans la bonne colonne
@@ -55,7 +55,9 @@ function renderButtons(films) {
     // A remplacer par le code qui va vraiment afficher les vrais boutons
     for (let i=0; i < all_tags.length; i++) {
 	//html += (all_tags[i]) ;
+    if (all_tags[i] != '') {
     html += '<li><a href=\"#\"><button class=\"tag-btn\" onclick=\"filter2(\'' + (all_tags[i]) + '\' , this)\">' + (all_tags[i]) + '</button></a></li>'
+    }
     }
 
     card.innerHTML = html;
@@ -169,15 +171,20 @@ function renderFilm(film) {
 
     html +='<td sorttable_customkey=\"'+ film[id_film_lenght] +'\"><div class =\"duration\">'+ film[id_film_lenght]+' min</div></td>';
     html +='<td><div class=\"tags\">';
+
+    if (film[id_film_tags] != '') {
     for (let i=0; i < all_tags.length; i++) {
     html += '<li><a href=\"#\"><button class=\"tag\" onclick=\"filter2(\'' + (all_tags[i]) + '\' , this)\">' + (all_tags[i]) + '</button></a></li>';
+    }
     }
     html += '</div></td>'
     //html +='<td><div class =\"country\">'+ film[id_film_countries] +'</div></td>';
     
     html +='<td><div class \"countries\">';
+    if (film[id_film_countries] != '') {
      for (let i=0; i < all_countries.length; i++) {
     html +='<li><a href=\"#\"><button class =\"country\" onclick=\"filtercountry(\'' + (all_countries[i]) + '\' , this)\">' + (all_countries[i]) +'</button></a></li>';
+     }
      }
     html += '</div></td>'
     html +='</tr>'

@@ -284,6 +284,7 @@ background: transparent;
 color: #888;
 cursor: pointer;
 transition: all 0.15s;
+float: left;
 }
 
 .log {
@@ -350,6 +351,8 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 
 .navbar {
   padding: 8px;
+  padding-bottom: 20px;
+  border-bottom: dotted 1px;
  
 }
 
@@ -363,18 +366,35 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     color: rgb(196, 139, 66);
     border:1px dotted burlywood;
 }
+
+.posecle {
+  font-size: large;
+  padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+
 .page:hover {
   background-color: rgba(222, 184, 135, 0.59);
 }
 
 .all {
-  background-color: burlywood;
+  background-color: rgb(237, 183, 113);
+  float: left;
 }
 
 .all.active {
-  background-color: rgb(237, 183, 113);
+  background-color: burlywood;
+  
 }
 
+.description {
+  padding-right: 30px;
+  padding-left: 30px;
+}
 
     </style>
   </head>
@@ -382,13 +402,11 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
    
 
 
-<div class="navbar"><a id="titre" href="/index.html"><strong>Pose Clé &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;·</strong></a>
-  <a class="page" href="/fotwarchive.html">past films of the week</a>
+  <div class="navbar"><a class="posecle" href="/index.html"><strong>Pose Clé &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;·</strong></a>
   <a class="page" href="/database/films.html">database</a>
+  <a class="page" href="/fotwarchive.html">past films of the week</a>
   <a class="page" href="/cineclub.html">cinéclub</a>
-   <a class="page" href="/about.html">about</a>
-
-
+  <a class="page about" href="/about.html">about</a>
 </div>
 
 
@@ -405,23 +423,23 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 </div>  
 -->
 
+<p class="description"><b>Ongoing index of animated short-films that can be found online</b></p>
 <div class="tag-bar" id="tag-bar">
 <ul id="taglist">
 <input type="text" id="taginput" onkeyup="searchtag()" placeholder="Search for a tag..">
-<a href="#"><button class="tag-btn active all" onclick="filter2('all', this)">reset-filters</button></a> <span id="display-buttons"></span> <span id="display-countries"></span>
+<a href="#"><button class="tag-btn active all" onclick="filter2('all', this)">reset-tags</button></a> <span id="display-buttons"></span>
 </ul>
 </div> 
-  
+  <!--
   <button class="tag-btn expand-schools" onclick="filter2('student-film', this)">student-film ></button></li>
   <div class="collapsed" id="tags-shcool">
   <a href="#"><button class="tag-btn" onclick="filter2('calarts', this)">calarts</button></a></li>
   <a href="#"><button class="tag-btn" onclick="filter2('ensad', this)">ensad</button></a></li>
   </div>
+-->
 
+<br>
 
-<br>
-<br>
-<br>
 
 
 
