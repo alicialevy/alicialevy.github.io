@@ -462,7 +462,7 @@ trigger.forEach(trigger => {
         let html = "";
       
         const filmname = trigger.querySelector(".filmname").innerHTML;
-        const filmdirector = trigger.querySelector(".directors").innerText;
+        const filmdirector = trigger.querySelector(".directors")[0].innerText;
         const filmimg = trigger.dataset.img || '';
         const filmlinksource = trigger.dataset.linksource || '';
         const filmlink = trigger.querySelector(".filmnamelink").href;
