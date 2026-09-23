@@ -158,7 +158,7 @@ function renderFilm(film) {
     let html = '';
     html += '<tr class=\"item entry trigger\" onmouseover=\"renderiframeonhover()\" data-director=\"'+ film[id_film_director] + '\" data-country=\"' + film[id_film_countries] + '\" data-tags=\"' + film[id_film_tags] + '\" data-img=\"' + film[id_film_img] + '\" data-linksource=\"' + film[id_link_source] + '\" data-synopsis=\"' + film[id_film_synopsys] + '\">';
     html +='<td><div class =\"year\">'+ film[id_film_date] +'</div></td>';
-    if (film[id_alt_title] != '') { html += '<td sorttable_customkey=\"' + film[id_alt_title] + '\"><div class =\"filmname\"><a class = \"filmnamelink\" href=\"' + film[id_link] + '\" target=\"_blank\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += '<br><span class=\"alt-title\">' + film[id_alt_title] + '</span>' }; '</div></td>' } else { html +='<td sorttable_customkey=\"' + film[id_film_name] + '\"><div class =\"filmname\"><a class=\"filmnamelink\" href=\"' + film[id_link] + '\" target=\"_blank\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += '<br><span class=\"alt-title\">' + film[id_alt_title] + '</span>' }; '</div></td>' };
+    if (film[id_alt_title] != '') { html += '<td sorttable_customkey=\"' + film[id_alt_title].trim() + '\"><div class =\"filmname\"><a class = \"filmnamelink\" href=\"' + film[id_link] + '\" target=\"_blank\">'+ film[id_film_name] + '</a><br><span class=\"alt-title\">' + film[id_alt_title] + '</span></div></td>' } else { html +='<td sorttable_customkey=\"' + film[id_film_name].trim() + '\"><div class =\"filmname\"><a class=\"filmnamelink\" href=\"' + film[id_link] + '\" target=\"_blank\">'+ film[id_film_name] + '</a></div></td>' };
     //html +='<td sorttable_customkey=\"'+ film[id_film_name] + '\"><div class =\"film-name\"><a href=\"' + film[id_film_name] + '.html\" target=\"iframe\">'+ film[id_film_name] + '</a>'; if (film[id_alt_title] != '') { html += '<br><span class=\"alt-title\">' + film[id_alt_title] + '</span>' }; '</div></td>';
     
     
@@ -222,7 +222,7 @@ function renderData(data) {
     html += '<table class=\"sortable\" id=\"tableau\" >'
     html += '<tr style=\"background-color: transparent;\">';
     html += '<th class = \"year-line\"><span class=\"columnname\">year </span></th>';
-    html += '<th class = \"film-name-line\"><span class=\"columnname\">name </span></th>';
+    html += '<th class = \"film-name-line sorttable_alpha\"><span class=\"columnname\">name </span></th>';
     html += '<th class = \"directors-line\"><span class=\"columnname\">director </span></th>';
     
     html += '<th class = \"duration-line\"><span class=\"columnname\">duration </span></th>';
@@ -239,8 +239,14 @@ function renderData(data) {
 
     sorttable.makeSortable(
     document.getElementById("tableau")
-);
 
+    
+
+
+    
+);
+var filmnameth = document.getElementsByClassName("film-name-line")[0];
+    sorttable.innerSortFunction.apply(filmnameth, []);
 }
 
 
