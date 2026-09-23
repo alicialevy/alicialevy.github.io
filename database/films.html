@@ -123,14 +123,22 @@ table{
 
 /*TEXT LINES*/
 
-.film-name{
+.filmname{
         font-size: medium;
         font-weight: bold;
         padding-left: 2%;
+        
     }
+
+.filmname a {
+  text-decoration:underline dotted ; 
+}
+
 .alt-title {font-style: italic;
             font-size: smaller;
-            color: #888;}
+            color: #888;
+            
+          }
 
 
 
@@ -423,7 +431,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 </div>  
 -->
 
-<p class="description"><b>Ongoing index of animated short-films that can be found online</b></p>
+<p class="description"><b>Ongoing index of animated short-films availaible online</b></p>
 <div class="tag-bar" id="tag-bar">
 <ul id="taglist">
 <input type="text" id="taginput" onkeyup="searchtag()" placeholder="Search for a tag..">

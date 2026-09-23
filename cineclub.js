@@ -51,11 +51,20 @@ function renderFilm(film) {
 
     html += '<div class=\"wrapper\">';
     html += '<div class=\"film-name\">';
-    html +=  film[id_film_name] ;
-    html+= '</div>'
-    html += '<div class=\"film-director\">';
+    html +=  film[id_film_name] ; 
+    if (film[id_alt_title] != ''){
+        html += '<div class =\"alttitle\">';
+        html += film[id_alt_title];
+        html += '</div>'
+    }
+
+    html += '<br>';
+    
+    html += '<a href=\"' + film[id_link] + '\" target= \"_blank\" class=\"film-director\">';
     html += film[id_film_director] ;
-    html += '</div>';
+    html += '</a>';
+    html+= '</div>';
+    
     html += '<div class=\"duree\">';
     html += film[id_film_lenght] ;
     html += '</div>';
