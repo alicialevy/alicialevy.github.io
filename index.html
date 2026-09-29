@@ -3,20 +3,59 @@
 <head>
     <link rel="stylesheet" href="database/style.css">
     <script src="sorttable.js"></script>
+    <meta charset="UTF-8">
 <style>
+
+@media screen and (min-width: 769px) {
+  .bgm {
+    background: none;
+    background-color: beige;
+  }
+}
+
+body {
+  background : no-repeat center/110% url("/filmsoftheweekimg/backgroundjaune.png");
+}
+
+
     .wrapper {
+  
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 300px 300px;
   grid-gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
+  grid-template-rows: 350px 50px;
+  
+  padding: 10px;
+  width: 850px;
+  padding-left: 500px;
+  padding-right: 20px;
+  align-self: center;
+  width: 600px;
 }
 
 .left{
-    grid-column: 1 / 3;
+    grid-column: 1/3;
+    grid-row: 1;
+}
+
+
+.left-left{
+     grid-column: 1;
+      grid-row: 2;
+}
+
+.left-right{
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.left img {
+  width: 600px;
+  height: auto;
 }
 
 .right{
-    grid-column: 3;
+    grid-column: 1/3;
     
 }
 
@@ -47,15 +86,7 @@
 
     
 
-    .film-name{
-        width: 20%;
-        font-weight: bold;
-    }
     
-
-    .tags{
-        width: 20%;
-    }
 
 
     tr:hover{
@@ -101,6 +132,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
   padding: 8px;
   padding-bottom: 20px;
   border-bottom: dotted 1px;
+  background-color: rgba(245, 245, 220, 0.482);
  
 }
 
@@ -121,6 +153,8 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     padding-left: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
+    color: black;
+    font-family: fshakumo;
 }
 
 
@@ -129,19 +163,114 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
   background-color: rgba(222, 184, 135, 0.59);
 }
 
+
+.film-name {
+    font-family: fshakumo;
+    font-weight: bold;
+    font-size: 15px;
+    color: rgb(63, 23, 5);
+    text-decoration: underline dotted;
+    
+  }
+
+  
+
+  .alttitle {
+     font-family: fshakumo;
+     font-size: small;
+  }
+
+  .film-director {
+    font-weight: normal;
+    font-size: medium;
+    font-family: fshakumo;
+    text-align: right;
+  }
+
+  .commentaire {
+    grid-row: 1;
+    font-family: fshakumo;
+    font-size: 12px;
+    text-align: justify;
+  }
+
+  .duree {
+   
+  }
+
+  .imgadd {
+    align-self: right;
+  }
+
+  .soustitre {
+    padding-left: 400px;
+   font-size: 30px;
+
+   
+   
+  }
+
+  .img-word {
+  position: relative;
+  cursor: pointer;
+  border-bottom: 1px dotted #bbb;
+	}
+
+
+.hover_img {
+  display: inline;
+}  
+.hover_img a { position:relative; color: black; text-decoration: none ; border-bottom: 1px dotted #bbb; cursor: crosshair; } /* text parameters */
+.hover_img a span { position:absolute; display:none ; z-index:99; height: 100px;} /* image span parameters */
+.hover_img a:hover span { display:inline; } /* image parameters */
+.hover_img a:hover { display:inline; background-color: rgba(199, 106, 40, 0); text-decoration: none; } /* text hover parameters */
+	
+	
+
 </style>
 </head>
 <body>
     
    
-<div class="navbar"><a class="posecle" href="/index.html"><strong>Pose Clé &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;·</strong></a>
+<div class="navbar"><a class="posecle" href="/index.html"><strong>POSE-CLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;·</strong></a>
   <a class="page" href="/database/films.html">database</a>
   <a class="page" href="/fotwarchive.html">past films of the week</a>
   <a class="page" href="/cineclub.html">cinéclub</a>
   <a class="page about" href="/about.html">about</a>
 </div>
+<p class="soustitre"><b>Film of the Week</b> - a new film every Saturday
+</p>
 
-<p><b>Film of the Week</b> - a new film every Saturday</p>
+<div class="wrapper">
+    <div class="left">
+        <img src="/filmsoftheweekimg/ballada.png">
+        </div>
+
+        <div class="left-left">
+         <div class="film-name"><a href="https://www.youtube.com/watch?v=0fIvxfWezRU" target="_blank">Balada o zeleném dřevu</a></div> 
+        <span class="alttitle"><i>A Ballad about green wood</i></span>
+        <div class="duree">11 min, <span class="date">1993</span><br></div>
+        </div>
+
+        <div class="left-right">
+            <div class="film-director">Jiří Barta</div>
+            
+        </div>
+    
+      
+
+    
+    <div class="right">
+         <div class="commentaire">J’ai découvert le travail de <div class="hover_img"><a href="#">Jiří Barta<span><img src="/filmsoftheweekimg/jiribarta.png" width="100px" alt="image"></span></a></div> grâce à son long métrage <a href="https://vimeo.com/192649758" target="_blank">Krysar, le joueur de flûte, (1985)</a> qui reprend l’histoire du joueur de flûte d’Hamelin. 
+Des milliers de puppets en bois ont été sculptés une à une pour créer ce conte fantastique et un peu glauque. Ce film m’avait beaucoup plu et poussé à entrer dans la filmographie du réalisateur. Je l’imagine enfermé dans un travail un peu fou et solitaire bien qu’accompagné de ses nombreuses créations. personnellement, je ne sais pas si c’est ma vie rêvée…
+
+J’ai alors vu récemment <a href="https://www.youtube.com/watch?v=0fIvxfWezRU" target="_blank">A Ballad About Greenwood</a>. Sa simplicité m’a donné envie d’animer, de récupérer deux/trois trucs et de faire de la pixilisation. Les visages émergent de sculptures dans le bois ou d’assemblage de plumes et de pailles. Avec peu d'éléments, il raconte un conte traditionnel de manière tragique et inventive. 
+<br>Inès
+</div>
+        </div>
+        
+</div>
+
 
     <p><strong>contact</strong><br>
     mail : pose-cle-cineclub@proton.me<br>

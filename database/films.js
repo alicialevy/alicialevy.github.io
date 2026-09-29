@@ -1,5 +1,5 @@
 Papa.parse(
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vRC4H_kqtC_bQJOZOOEWCp6BwU9GL6haywQyBq6-wsBjZEY5LTyyITgt1cyt6zxpKNOnIFh4EMR-NL1/pub?output=csv",
+   "/database/DB-Pose-Clé.csv",
    {
       download: true,
       complete: function(result) {
@@ -89,7 +89,7 @@ function renderCountries(films) {
     all_countries = sort_unique(all_countries);
 
     // A remplacer par le code qui va vraiment afficher les vrais boutons
-    for (let i=0; i < all_countres.length; i++) {
+    for (let i=0; i < all_countries.length; i++) {
 	html += (all_countries[i]) ;
     html += '<li><a href=\"#\"><button class=\"country\" onclick=\"filtercountry(\'' + (all_countries[i]) + '\' , this)\">' + (all_countries[i]) + '</button></a></li>'
     }

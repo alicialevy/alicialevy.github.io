@@ -1,5 +1,5 @@
 Papa.parse(
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vSC775QKrLTnFKs0b56EjWi-rnnI_kIbZG_FYv9FNhCLOJHm75E1RJl6ri2ujezLexp3gYnfNbGwDT-/pub?gid=0&single=true&output=csv",
+    "/seance1/séance1.csv",
    {
       download: true,
       complete: function(result) {
