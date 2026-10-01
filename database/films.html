@@ -200,6 +200,37 @@ cursor: pointer;
 transition: all 0.15s;
 }
 
+
+.suggestion {
+  float:right;
+  padding-right:40px;
+  background-color: none;
+}
+
+
+a.suggestion:hover  {
+  background-color: transparent;
+}
+
+.suggestion-btn{
+  font-weight: bold;
+  font-family: monospace;
+font-size: 14px;
+padding: 2px 8px;
+border: 1px dotted #bbb;
+background: rgba(222, 184, 135, 0.23);
+color: rgb(196, 139, 66);
+cursor: pointer;
+}
+
+.suggestion-btn:hover{
+   background-color: rgba(222, 184, 135, 0.59);
+}
+
+
+
+
+
 .tag {
    font-size: 8px;
    color:rgb(62, 37, 109) ;
@@ -435,8 +466,8 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 </ul>
 </div>  
 -->
-
-<p class="description"><b>Ongoing index of animated short-films availaible online</b></p>
+<br>
+<span class="description"><b>Ongoing index of animated short-films availaible online</b></span><a class="suggestion" href="https://docs.google.com/spreadsheets/d/1kBY7S_hGyyQYfJGh8TNihsFL3Ed94l4_8Vo3x0vnf8g/edit?usp=sharing" target="_blank"><button class="suggestion-btn" >contribute to the database</button></a>
 <div class="tag-bar" id="tag-bar">
 <ul id="taglist">
 <input type="text" id="taginput" onkeyup="searchtag()" placeholder="Search for a tag..">
