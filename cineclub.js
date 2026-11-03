@@ -72,7 +72,7 @@ function renderFilm(film) {
     html += film[id_film_date];
     html += '</div>';
     html += '<div class=\"image\">';
-    html += '<img class=\"image\" src=\"seance1/' + film[id_film_img] + '\">';
+    html += '<img class=\"image\" src=\"seance2/' + film[id_film_img] + '\">';
     html += '</div>';
     html += '<div class=\"synopsis\">';
     html += film[id_film_synopsys];
