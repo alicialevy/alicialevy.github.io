@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="cineclubarchive.js" defer></script>
+    <script src="sorttable.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8"> 
+    <style>
+    body{
+  width: 100%;
+  height: 100%;
+    }
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.left{
+    grid-column: 1 / 3;
+    align-self: flex-start;
+}
+
+.right{
+    grid-column: 3;
+    
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: 1px dotted #233d29 ;
+}
+
+.sticky-wrapper {
+  position: sticky;
+  top: 50px; /* Distance from the top of the screen when scrolling */
+}
+
+.sticky-wrapper iframe {
+  width: 100%;
+  height: 80vh; /* Adjust height to fit nicely on the screen */
+}
+
+body{
+		font-family: monospace; 
+		color: black;
+		background-color: beige;
+		/*white-space: pre;*/
+	} 
+
+#back-to-index{
+  font-size: xx-small;
+}
+
+.japanese{
+  font-family: sans-serif;
+}
+
+a {
+    color:  rgb(109, 61, 197);
+}
+
+a :visited{
+    color:  rgb(62, 37, 109);
+}
+
+a:hover{
+    background-color: #e5d3fc8b;
+}
+
+
+
+
+
+
+
+    </style>
+  </head>
+
+
+
+
+
+<body>
+   
+  <div class="navbar"><a class="posecle" href="/index.html"><strong>POSE-CLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;·</strong></a>
+  <a class="page" href="/database/films.html">database</a>
+  <a class="page" href="/fotwarchive.html">past films of the week</a>
+  <a class="page" href="/cineclub.html">cinéclub</a>
+  <a class="page about" href="/about.html">about</a>
+  </div>
+
+<div class="wrapper">
+  <div class="left">
+    <a href="seance1.html" target="preview"><img class="affiche" src="/seance1/affiche-octobre.png"></a>
+   
+   </div>
+    <div class="right">
+      <div class="sticky-wrapper">
+    <iframe id="preview" src="film-iframe.html"></iframe>
+      </div>
+    </div>
+</div>
+
+</body>
+</html>
+</body>
+
+<footer>
+  <center><p>2026 · <a href="/index.html">Pose-Clé</a> · hosted on <a href="//https://neocities.org/" target="_blank">Neocities</a></p></center>
+</footer>
