@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="database/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="cineclub1.js" defer></script>
+    <meta charset="UTF-8"> 
+<style>
+
+  
+  
+    body{
+  width: 100%;
+  height: 100%;
+    }
+
+.seancetitle {
+   font-family: fshakumo;
+    font-size: larger;
+    padding-left: 30px;
+    color: rgb(63, 23, 5);
+}
+
+.seance {
+  font-size: large;
+  font-family: fshakumo;
+  color: rgb(63, 23, 5);
+}
+
+
+     .wrapper {  
+  display: grid;
+  grid-template-columns: 200px 10px 60px 350px 400px;
+  grid-gap: 10px;
+  grid-template-rows: 130px 50px;
+  padding-bottom: 20px;
+  border-bottom: dotted 1px;
+  padding-left: 10px;
+  
+}
+
+
+.image {
+  grid-column: 4/5;
+    grid-row: 1/3;
+}
+
+.image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.synopsis{
+  grid-column: 5;
+    grid-row: 1;
+    text-align: justify;
+}
+
+.technique{
+  grid-column: 5;
+  grid-row: 2;
+  align-self: end;
+}
+
+  
+  .film-name {
+    grid-column: 1;
+     grid-row: 1/3;
+    font-family: fshakumo;
+    padding-left: 20px;
+    font-weight: bold;
+    font-size: large;
+    align-self: center;
+    color: rgb(63, 23, 5);
+  }
+
+  
+
+  .alttitle {
+     
+     font-size: small;
+  }
+
+  .film-director {
+    grid-column: 1;
+    grid-row: 2;
+    font-weight: normal;
+    font-size: medium;
+    font-family: fshakumo;
+  }
+
+  .duree {
+    grid-column: 3;
+    grid-row: 1;
+  }
+  .date {
+    grid-column: 3;
+    grid-row: 2;
+    align-self: end;
+  }
+
+  .technique {
+    font-style: italic;
+  }
+
+  button {
+    font-family: monospace;
+font-size: 11px;
+padding: 2px 8px;
+border: 1px dotted rgb(125, 86, 199);
+background: rgba(164, 164, 214, 0.514);
+color:rgb(109, 61, 197);
+cursor: pointer;
+transition: all 0.15s;
+}
+  
+
+
+.navbar {
+  padding: 8px;
+  padding-bottom: 20px;
+  border-bottom: dotted 1px;
+ 
+}
+
+.page {
+    padding-right: 25px;
+    padding-left: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+     background-color: rgba(222, 184, 135, 0.23);
+    font-weight: bold;
+    color: rgb(196, 139, 66);
+    border:1px dotted burlywood;
+}
+
+
+.posecle {
+  font-size: large;
+  padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: black;
+    font-family: fshakumo;
+}
+
+
+
+.page:hover {
+  background-color: rgba(222, 184, 135, 0.59);
+}
+
+</style>
+</head>
+<body>
+
+
+
+
+
+<br>
+p><span class="seancetitle"><b>Seance du 8 octobre 2026 :</b></span>&nbsp;&nbsp;&nbsp;<span class="seance"><b>Pose-Clé cinéclub 1 · à <a href="https://cesure.paris/" target="_blank">Césure</a></span><br></p>
+<br>
+<br>
+<div id="display-films"></div>
+</body>
+</html>
