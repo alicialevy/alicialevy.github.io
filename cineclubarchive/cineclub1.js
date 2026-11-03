@@ -44,6 +44,7 @@ function renderFilm(film) {
     let id_link = 10;
     let id_link_source = 11;
     let id_film_img = 12;
+    let id_film_link = 13;
 
     
     let html = '';
@@ -66,10 +67,10 @@ function renderFilm(film) {
     html+= '</div>';
     
     html += '<div class=\"duree\">';
-    html += film[id_film_lenght] ;
+    html += film[id_film_lenght] + ', ' + film[id_film_date] ;
     html += '</div>';
-    html += '<div class=\"date\">';
-    html += film[id_film_date];
+    html += '<div class=\"linkbtn\"' ;
+    html += '<a href=\"' + film[id_film_link] + '\" target=\"_blank\"><button class="link">watch online </button></a>'
     html += '</div>';
     html += '<div class=\"image\">';
     html += '<img class=\"image\" src=\"seance1/' + film[id_film_img] + '\">';
