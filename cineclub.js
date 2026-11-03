@@ -1,5 +1,5 @@
 Papa.parse(
-    "/seance2/séance2.csv",
+    "/seance2/seance2.csv",
    {
       download: true,
       complete: function(result) {
