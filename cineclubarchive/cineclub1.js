@@ -1,5 +1,5 @@
 Papa.parse(
-    "/seance1/seance1.csv",
+    "/cineclubarchive/seance1/seance1.csv",
    {
       download: true,
       complete: function(result) {
