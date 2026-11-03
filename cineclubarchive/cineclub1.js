@@ -70,7 +70,7 @@ function renderFilm(film) {
     html += film[id_film_lenght] + ', ' + film[id_film_date] ;
     html += '</div>';
     html += '<div class=\"linkbtn\"' ;
-    html += '<a href=\"' + film[id_film_link] + '\" target=\"_blank\"><button class="link">watch it online</button></a>'
+    html += '<a href=\"' + film[id_film_link] + '\" target=\"_blank\"><button class=\"link\">watch it online</button></a>'
     html += '</div>';
     html += '<div class=\"image\">';
     html += '<img class=\"image\" src=\"seance1/' + film[id_film_img] + '\">';
